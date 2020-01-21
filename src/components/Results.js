@@ -6,7 +6,7 @@ import {
 const Results = () => {
   return (
   <Container>
-    <h1> This is a placeholder for the results section</h1>
+    <h3> Here is the weather in "city" </h3>
   </Container>
   )
 };
