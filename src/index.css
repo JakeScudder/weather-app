@@ -6,7 +6,7 @@ h1 {
 
 h5 {
   margin: auto;
-  width: 300px;
+  width: 100%;
   text-align: center;
 }
 
@@ -57,7 +57,17 @@ p {
   width: 50%;
 }
 
-/* Results */
+/* Results Header*/
+
+#greetingCard {
+  margin:auto;
+  text-align: center;
+  width: 70%;
+}
+
+#greetingBody {
+  padding: .25rem;
+}
 
 #resHeadCard {
   margin:auto;
@@ -67,4 +77,16 @@ p {
 
 #resHeadBody {
   padding: .5rem;
+}
+
+/* Results Forecast */
+
+.h5Forecast {
+  margin-top: 10px;
+}
+
+/* Results Background Image*/
+
+#resultsContainer {
+  background-size: contain;
 }

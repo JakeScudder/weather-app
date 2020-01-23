@@ -11,6 +11,7 @@ import Results from './components/Results';
 import axios from 'axios';
 import apiKey from './config';
 
+
 //Images
 import Hammer from './images/hammer.jpeg';
 
@@ -20,6 +21,8 @@ class App extends Component {
     this.state = {
       location: "",
       results: [],
+      imgQuery: [],
+      backgroundImg: "",
       loading: true
     }
   }
@@ -32,10 +35,12 @@ class App extends Component {
     this.setState({
       loading: true
     })
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${query}&APPID=${apiKey}`)
+    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${apiKey}`)
       .then(res => {
+        let query = `${res.data.weather[0].description}`
         this.setState({
           results: res.data,
+          imgQuery: query,
           loading: false
         })
       })
@@ -43,6 +48,7 @@ class App extends Component {
         console.log('Error fetching the weather data:', error)
       })
   }
+
   render() {
     return (
       <HashRouter>
@@ -60,7 +66,7 @@ class App extends Component {
             />
           </Container>
         </Jumbotron>
-        <Results data={this.state.results}/>
+        <Results data={this.state.results} query={this.props.imgQuery} background={this.state.background}/>
       </div>
       </HashRouter>
       

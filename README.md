@@ -1,3 +1,12 @@
+A Weather App created by Jake Morris
+
+Made using Create React App and using react-bootstrap components
+
+API fetch requests using axios to access the Open Weather Map API
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
