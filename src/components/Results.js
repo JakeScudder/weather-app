@@ -3,10 +3,16 @@ import {
   Container,
 } from 'react-bootstrap';
 
-const Results = () => {
+//Components
+
+import ResultsHeader from './ResultsHeader';
+
+const Results = (props) => {
+  let city = props.data.name;
   return (
   <Container>
-    <h3> Here is the weather in "city" </h3>
+    <ResultsHeader data={props.data} />
+    <h5> {`Here is the weather in ${city}:`} </h5>
   </Container>
   )
 };

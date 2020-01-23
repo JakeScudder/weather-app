@@ -34,7 +34,6 @@ class App extends Component {
     })
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${query}&APPID=${apiKey}`)
       .then(res => {
-        console.log(res);
         this.setState({
           results: res.data,
           loading: false
@@ -61,7 +60,7 @@ class App extends Component {
             />
           </Container>
         </Jumbotron>
-        <Results />
+        <Results data={this.state.results}/>
       </div>
       </HashRouter>
       
