@@ -1,3 +1,18 @@
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+div#root {
+  margin: 0;
+  height: 100%;
+}
+
+div.App {
+  margin: 0;
+  height: 100%;
+}
+
 h1 {
   margin: auto;
   width: 300px;
@@ -17,8 +32,6 @@ div.jumbotron {
 
 div.container {
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -81,12 +94,19 @@ p {
 
 /* Results Forecast */
 
+div#forecast {
+  background-color: grey;
+  opacity: .8;
+}
+
 .h5Forecast {
   margin-top: 10px;
+  font-weight: 800;
+  color: black;
 }
 
 /* Results Background Image*/
-
+/* 
 #resultsContainer {
-  background-size: contain;
-}
+  
+} */
