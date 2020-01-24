@@ -14,7 +14,8 @@ class Results extends Component {
     super(props);
     this.state = {
       background: "",
-      query: `${this.props.query}`
+      query: `${this.props.query}`,
+      loading: true,
     } 
     this.backgroundRef = React.createRef();
   }
@@ -30,7 +31,7 @@ class Results extends Component {
     })
     axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKeyFlickr}&tags=${query}&per_page=24&extras=url_o&format=json&nojsoncallback=1`)
     .then(res => {
-      let format = `url(${res.data.photos.photo[10].url_o})`;
+      let format = `url(${res.data.photos.photo[3].url_o})`;
       this.setState({
         background:format,
         loading: false
@@ -47,7 +48,7 @@ class Results extends Component {
 
   setBackgroundImg = () => {
     this.backgroundRef.current.style.background = this.state.background;
-    this.backgroundRef.current.style.backgroundSize = "contain";
+    this.backgroundRef.current.style.backgroundSize = "cover";
   }
 
  render() {
