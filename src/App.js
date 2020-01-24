@@ -10,6 +10,7 @@ import Results from './components/Results';
 //Fetch
 import axios from 'axios';
 import apiKey from './config';
+import apiKeyFlickr from './flickr'
 
 
 //Images
@@ -21,8 +22,8 @@ class App extends Component {
     this.state = {
       location: "",
       results: [],
-      imgQuery: [],
-      backgroundImg: "",
+      query: "",
+      background: "",
       loading: true
     }
   }
@@ -31,18 +32,42 @@ class App extends Component {
     this.handleWeatherFetch();
   }
 
+  //Fetch background Image
+  handleFlickr = (query) => {
+    this.setState({
+      loading: true
+    })
+    axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKeyFlickr}&tags=${query}&per_page=24&extras=url_o&format=json&nojsoncallback=1`)
+    .then(res => {
+      let format = `url(${res.data.photos.photo[7].url_o})`;
+      this.setState({
+        background: format,
+        loading: false
+      })
+      console.log(res.data);
+    })
+    .catch(error => {
+      console.log('Error fetching and parsing data', error)
+    },)
+  }
+
   handleWeatherFetch = (query = "charlottesville") => {
     this.setState({
       loading: true
     })
     axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${apiKey}`)
       .then(res => {
-        let query = `${res.data.weather[0].description}`
+        let query = res.data.weather[0].description
         this.setState({
           results: res.data,
-          imgQuery: query,
+          query: query,
           loading: false
         })
+        setTimeout(() => {
+          console.log(this.state.query);
+          this.handleFlickr(this.state.query);
+        }, 1000)
+        
       })
       .catch(error => {
         console.log('Error fetching the weather data:', error)
@@ -66,7 +91,7 @@ class App extends Component {
             />
           </Container>
         </Jumbotron>
-        <Results data={this.state.results} query={this.props.imgQuery} background={this.state.background}/>
+        <Results data={this.state.results} background={this.state.background}/>
       </div>
       </HashRouter>
       
