@@ -26,8 +26,9 @@ const SearchForm = (props) => {
 
   return (
     <Form onSubmit={handleSubmit} inline>
-      <FormGroup controlId="searchBar">
-        <FormControl 
+      <FormGroup id="searchBarContainer">
+        <FormControl
+        id="searchBar" 
         type="search" 
         name="search" 
         placeholder="What's the weather like in..." 

@@ -12,7 +12,6 @@ import axios from 'axios';
 import apiKey from './config';
 
 //Images
-import Hammer from './images/hammer.jpeg';
 
 class App extends Component {
   constructor() {
@@ -123,11 +122,6 @@ class App extends Component {
         <Jumbotron>
           <Container>
             <h1>Weather App</h1>
-            <p>
-              Weather App Under Construction
-            </p>
-            <img id="construction" src={Hammer} alt="underConstruction"/>
-          
             <SearchForm 
               handleSearch={this.handleWeatherFetch}
             />

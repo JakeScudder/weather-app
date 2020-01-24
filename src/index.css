@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Alegreya:700 |Fredoka+One&display=swap");
+
 html, body {
   margin: 0;
   height: 100%;
@@ -15,41 +17,45 @@ div.App {
 
 h1 {
   margin: auto;
-  width: 300px;
+  width: 80%;
   text-align: center;
+  font-family: 'Fredoka One', cursive;
 }
 
-h5 {
-  margin: auto;
-  width: 100%;
-  text-align: center;
-}
+
 
 div.jumbotron {
   margin: auto;
   padding: 0px;
+  background-image: url(./images/Humpback.jpg);
+  height: 35%;
+  background-size: cover;
+  border-bottom: 10px solid #035403;
 }
 
 div.container {
   width: 100%;
   margin-right: auto;
   margin-left: auto;
+  padding-right: 0px;
+  padding-left: 0px;
 }
 
-p {
-  margin: auto;
-  width: 300px;
-  text-align: center;
-}
+
 
 .form-inline {
   width: 100%;
   margin: auto;
 }
 
+#searchBarContainer {
+  margin-bottom: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #searchBar {
   width: 100%;
-  margin-left: 50px;
   margin-top: 10px;
   text-align: center;
 }
@@ -62,7 +68,7 @@ p {
   width: 50%;
 }
 
-#construction {
+#headerPic {
   display: block;
   margin-top: 10px;
   margin-left: auto;
@@ -96,13 +102,23 @@ p {
 
 div#forecast {
   background-color: grey;
-  opacity: .8;
+  opacity: .9;
+  width: 80%;
+  margin: auto;
+  font-family: "Alegreya" , serif;
+  font-weight: bold;
 }
 
 .h5Forecast {
   margin-top: 10px;
-  font-weight: 800;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
   color: black;
+  font-family: "Alegreya" , serif;
+  font-weight: 700;
+  text-align: center;
+
 }
 
 /* Results Background Image*/
