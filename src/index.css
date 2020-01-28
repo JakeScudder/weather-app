@@ -15,22 +15,26 @@ div.App {
   height: 100%;
 }
 
-h1 {
-  margin: auto;
-  width: 80%;
+#appTitle {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  width: 90%;
   text-align: center;
-  font-family: 'Fredoka One', cursive;
+  font-family: "Alegreya", serif;
+  font-weight: 700;
 }
-
 
 
 div.jumbotron {
   margin: auto;
   padding: 0px;
-  background-image: url(./images/Humpback.jpg);
+  /* background-image: url(./images/Humpback.jpg); */
   height: 35%;
-  background-size: cover;
-  border-bottom: 10px solid #035403;
+  background-color: white;
+  border: 10px solid grey;
+  border-radius: 0px;
 }
 
 div.container {
@@ -49,9 +53,9 @@ div.container {
 }
 
 #searchBarContainer {
-  margin-bottom: 1rem;
   margin-left: auto;
   margin-right: auto;
+  width: 75%;
 }
 
 #searchBar {
@@ -64,8 +68,10 @@ div.container {
 #searchButton {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 10px;
   width: 50%;
+  margin-top: -11px;
+  background-color: #378dea;
+  border-color: #378dea;
 }
 
 #headerPic {
@@ -81,32 +87,30 @@ div.container {
 #greetingCard {
   margin:auto;
   text-align: center;
-  width: 70%;
+  width: 80%;
+  font-family: "Alegreya" , serif;
+  font-weight: 700;
+  border: 10px solid grey;
+  background-color: white;
 }
 
-#greetingBody {
+h5#greetingBody {
   padding: .25rem;
-}
-
-#resHeadCard {
-  margin:auto;
-  text-align: center;
-  width: fit-content;
-}
-
-#resHeadBody {
+  font-family: "Alegreya" , serif;
+  font-weight: 700;
   padding: .5rem;
 }
+
 
 /* Results Forecast */
 
 div#forecast {
-  background-color: grey;
-  opacity: .9;
-  width: 80%;
   margin: auto;
+  width: 80%;
   font-family: "Alegreya" , serif;
-  font-weight: bold;
+  font-weight: 700;
+  background-color: white;
+  border: 10px solid grey;
 }
 
 .h5Forecast {
@@ -122,7 +126,45 @@ div#forecast {
 }
 
 /* Results Background Image*/
-/* 
-#resultsContainer {
+
+#tree {
+  height: 150px;
+}
+
+/* Nav Bar */
+
+#mainNav {
+  display: inline;
   
-} */
+}
+
+#mainNav ul {
+  margin-top: 10px;
+  margin-left:  auto;
+  margin-right:  auto;
+  width: 90%;
+  text-align: center;
+  padding: 0px;
+  
+}
+
+#mainNav ul a {
+  background: grey;
+  color: black;
+  border-radius: 3px;
+  padding: 5px;
+  font-family: "Alegreya" , serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+
+#mainNav li {
+  display: inline-block;
+  width: 20%;
+}
+
+#mainNav .active {
+  background-color: #26942e;
+  text-decoration: none;
+}

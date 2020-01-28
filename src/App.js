@@ -6,12 +6,15 @@ import { Container, Jumbotron } from 'react-bootstrap';
 //Components
 import SearchForm from './components/SearchForm';
 import Results from './components/Results';
+import Nav from './components/Nav';
 
 //Fetch
 import axios from 'axios';
 import apiKey from './config';
 
 //Images
+
+// import oldTree from './images/oldTree.jpeg';
 
 class App extends Component {
   constructor() {
@@ -121,10 +124,12 @@ class App extends Component {
       <div className="App">
         <Jumbotron>
           <Container>
-            <h1>Weather App</h1>
+            <h3 id="appTitle">Weather The Elements</h3>
             <SearchForm 
               handleSearch={this.handleWeatherFetch}
             />
+            <Nav fetchNav={this.handleWeatherFetch}/>
+            {/* <img id="tree" src={oldTree} /> */}
           </Container>
         </Jumbotron>
         <Results data={this.state.results} background={this.state.background}/>

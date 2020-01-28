@@ -47,8 +47,8 @@ const Forecast = (props) => {
   return (
     <div id="forecast">
       <h5 className="h5Forecast">{`${descCapitalized}, currently ${currentTemp}°`}</h5>
-      <h5 className="h5Forecast">{`Feels Like:${feels}°`}</h5>
-      <h5 className="h5Forecast">{`Low Today:${low}°`}</h5>
+      <h5 className="h5Forecast">{`Feels Like: ${feels}°`}</h5>
+      <h5 className="h5Forecast">{`Low Today: ${low}°`}</h5>
       <h5 className="h5Forecast">{`High Today: ${high}°`}</h5>
       {/* <h5>{`${currentTemp}°`}</h5> */}
     </div>

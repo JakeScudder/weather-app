@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-  Card,
-} from 'react-bootstrap';
 
 const ResultsHeader = (props) => {
   let city = props.data.name
@@ -17,11 +14,9 @@ const ResultsHeader = (props) => {
   
   return (
     <div>
-      <Card id="greetingCard">
-        <Card.Body id="greetingBody">
-          <h5 > {`Here is the weather in ${city}:`} </h5>
-        </Card.Body>
-      </Card>
+      <div id="greetingCard">
+          <h5 id="greetingBody"> {`Here is the weather in ${city}:`}</h5>
+      </div>
       {/*Latitude not really needed*/}
       {/* <Card id="resHeadCard">
         <Card.Body id="resHeadBody">
