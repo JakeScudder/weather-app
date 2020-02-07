@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 //Bootstraps
 import { Container, Jumbotron } from 'react-bootstrap';
 
@@ -7,6 +7,7 @@ import { Container, Jumbotron } from 'react-bootstrap';
 import SearchForm from './components/SearchForm';
 import Results from './components/Results';
 import Nav from './components/Nav';
+import NavEdit from './components/NavEdit';
 
 //Fetch
 import axios from 'axios';
@@ -45,6 +46,9 @@ class App extends Component {
       scatteredCloud:"url(https://live.staticflickr.com/3229/2887338950_0a190905a1.jpg)" ,
       overcastCloud: "url(https://live.staticflickr.com/3229/2887338950_0a190905a1.jpg)",
     }
+    this.setState({
+      background: imageObject.clearSky
+    })
     if (query.includes("clear")) {
       console.log("in");
       this.setState({
@@ -86,11 +90,7 @@ class App extends Component {
         background: imageObject.scatteredCloud
       })
       return;
-    } else {
-      this.setState({
-        background: imageObject.clearSky
-      })
-    }
+    } 
   }
 
   // Weather API call
@@ -129,10 +129,28 @@ class App extends Component {
               handleSearch={this.handleWeatherFetch}
             />
             <Nav fetchNav={this.handleWeatherFetch}/>
-            {/* <img id="tree" src={oldTree} /> */}
+            
           </Container>
         </Jumbotron>
-        <Results data={this.state.results} background={this.state.background}/>
+        {/* <Results data={this.state.results} background={this.state.background}/> */}
+        <Switch>
+              <Route exact path ="/"
+              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+              />
+              <Route exact path ="/VA"
+              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+              />
+
+              <Route exact path ="/ME"
+              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+              />
+              <Route exact path ="/FL"
+              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+              />
+              <Route exact path ="/CA"
+              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+              />
+            </Switch>
       </div>
       </HashRouter>
       
