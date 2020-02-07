@@ -3,30 +3,52 @@ import { NavLink } from 'react-router-dom';
 
 const Nav = (props) => {
 
-  const [nav1, setNav1] = useState("Charlottesville");
-  const [url1, setUrl1] = useState("VA")
+  // let textInput = React.createRef();
 
-  const [nav2, setNav2] = useState("Maine");
-  const [url2, setUrl2] = useState("ME");
+  const [nav1, setNav1] = useState("Virginia");
+  const [url1, setUrl1] = useState("Virginia")
 
-  const [nav3, setNav3] = useState("Florida");
-  const [url3, setUrl3] = useState("FL")
-
-  const [nav4, setNav4] = useState("California");
-  const [url4, setUrl4] = useState("CA");
+  const[input, setInput] = useState("");
+  const[showing, setShowing] = useState(false)
 
   const setLink = e => {
     let link = e.target.name;
     props.fetchNav(link)
   }
 
-  const newLink = (event) => {
-    // console.log(event.target.parentElement.parentElement.firstChild.firstChild);
+  const handleChange = (event) => {
+    setInput(event.target.value);
+  }
 
-    //  event.target.parentElement.parentElement.firstChild.firstChild.name = "Maine";
+  const changeLink = () => {
+    setNav1(input);
+    abbreviate(input);
+  }
 
-     setNav1("Maine");
-     setUrl1("ME");
+  const abbreviate = (word) => {
+    if (word.length > 10) {
+      let short = word.substring(0, 10);
+      let format = `${short}..`
+      setUrl1(format);
+    } else {
+      setUrl1(word);
+    }
+  }
+
+  const showHideInput = () => {
+    props.jumbo();
+    if (!showing) {
+      setShowing(true);
+    } else {
+      setShowing(false);
+    }
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    props.jumbo();
+    changeLink();
+    setShowing(false);
   }
 
   // Need to open an input that lets users select the location and then use the newLink function to set the Nav and the Url
@@ -34,11 +56,13 @@ const Nav = (props) => {
   return (
   <div id="mainNav">
     <ul>
-      <li><NavLink exact to={url1} name={nav1} onClick={setLink}>{url1}</NavLink></li>
-      <li><NavLink to={url2} name={nav2} onClick={setLink}>{url2}</NavLink></li>
-      <li><NavLink to={url3}name={nav3} onClick={setLink}>FL</NavLink></li>
-      <li><NavLink to={url4} name={nav4} onClick={setLink}>CA</NavLink></li>
-      <li><NavLink to="/new"  onClick={newLink} >❤</NavLink></li>
+      <li><NavLink exact to="link1" name={nav1} onClick={setLink}>{url1}</NavLink></li>
+      <li><NavLink to="link2" name="Maine" onClick={setLink}>Maine</NavLink></li>
+      <li><NavLink to="link3" name="Florida" onClick={setLink}>Florida</NavLink></li>
+      <li><NavLink to="" onClick={showHideInput} > Edit </NavLink></li>
+      <form onSubmit={handleSubmit}  style={{display: showing ? 'block' : "none"}}>
+          <input type="text" placeholder="Edit the first link..." ref={textInput => textInput && textInput.focus()} className="edit-nav" value={input} onChange={handleChange}/>
+      </form>
     </ul>
   </div>
   )

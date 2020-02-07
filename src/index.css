@@ -16,10 +16,9 @@ div.App {
 }
 
 #appTitle {
-  margin-top: 20px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
   width: 90%;
   text-align: center;
   font-family: "Alegreya", serif;
@@ -31,7 +30,7 @@ div.jumbotron {
   margin: auto;
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
-  height: 35%;
+  height: 32%;
   background-color: white;
   border: 10px solid grey;
   border-radius: 0px;
@@ -60,7 +59,6 @@ div.container {
 
 #searchBar {
   width: 100%;
-  margin-top: 10px;
   text-align: center;
 }
 
@@ -161,10 +159,30 @@ div#forecast {
 
 #mainNav li {
   display: inline-block;
-  width: 20%;
+  margin-right: 20px;
 }
 
 #mainNav .active {
   background-color: #26942e;
   text-decoration: none;
+}
+
+input.edit-nav {
+  display: block;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 85%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }

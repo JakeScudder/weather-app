@@ -7,7 +7,6 @@ import { Container, Jumbotron } from 'react-bootstrap';
 import SearchForm from './components/SearchForm';
 import Results from './components/Results';
 import Nav from './components/Nav';
-import NavEdit from './components/NavEdit';
 
 //Fetch
 import axios from 'axios';
@@ -25,8 +24,10 @@ class App extends Component {
       results: [],
       query: "",
       background: "",
+      jumboSmall: true,
       loading: true
     }
+    this.jumbo = React.createRef();
   }
 
   componentDidMount(){
@@ -118,17 +119,31 @@ class App extends Component {
       })
   }
 
+  handleJumboStyle = () => {
+    if (this.state.jumboSmall) {
+      this.jumbo.current.style.height = "37.5%";
+      this.setState({
+        jumboSmall: false
+      })
+    } else {
+      this.jumbo.current.style.height = "32%";
+      this.setState({
+        jumboSmall: true
+      })
+    }
+  }
+
   render() {
     return (
       <HashRouter>
       <div className="App">
-        <Jumbotron>
+        <Jumbotron ref={this.jumbo}>
           <Container>
             <h3 id="appTitle">Weather The Elements</h3>
             <SearchForm 
               handleSearch={this.handleWeatherFetch}
             />
-            <Nav fetchNav={this.handleWeatherFetch}/>
+            <Nav jumbo={this.handleJumboStyle} fetchNav={this.handleWeatherFetch}/>
             
           </Container>
         </Jumbotron>
@@ -137,14 +152,14 @@ class App extends Component {
               <Route exact path ="/"
               render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
               />
-              <Route exact path ="/VA"
+              <Route exact path ="/link1"
               render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
               />
 
-              <Route exact path ="/ME"
+              <Route exact path ="/link2"
               render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
               />
-              <Route exact path ="/FL"
+              <Route exact path ="/link3"
               render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
               />
               <Route exact path ="/CA"
