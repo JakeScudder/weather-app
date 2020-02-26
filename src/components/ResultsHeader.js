@@ -2,20 +2,11 @@ import React from 'react';
 
 const ResultsHeader = (props) => {
   let city = props.data.name
-  
-  //Latitude Longitude
-  // let lat;
-  // let lon;
-  
-  // if (props.data.coord && props.data.coord.lat) {
-  //   lat = props.data.coord.lat
-  //   lon = props.data.coord.lon
-  // }
-  
+
   return (
     <div>
       <div id="greetingCard">
-          <h5 id="greetingBody"> {`Here is the weather in ${city}:`}</h5>
+          <h3 id="greetingBody">{city}</h3>
       </div>
       {/*Latitude not really needed*/}
       {/* <Card id="resHeadCard">

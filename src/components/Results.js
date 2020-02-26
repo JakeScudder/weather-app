@@ -4,7 +4,6 @@ import {
 } from 'react-bootstrap';
 import Forecast from './Forecast';
 
-import ResultsHeader from './ResultsHeader';
 
 class Results extends Component {
   constructor (props) {
@@ -31,7 +30,6 @@ class Results extends Component {
    this.waitForIt();
   return (
     <Container ref={this.backgroundRef}  id="resultsContainer">
-      <ResultsHeader data={this.props.data} />
       <Forecast data={this.props.data} />
     </Container>
     )

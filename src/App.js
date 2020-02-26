@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 //Bootstraps
 import { Container, Jumbotron } from 'react-bootstrap';
 
@@ -51,42 +51,42 @@ class App extends Component {
       background: imageObject.clearSky
     })
     if (query.includes("clear")) {
-      console.log("in");
       this.setState({
         background: imageObject.clearSky
       })
       return;
     }
+    if (query.includes("rain")) {
+      this.setState({
+        background: imageObject.lightRain
+      })
+      return;
+    }
     if (query.includes("light rain")) {
-      console.log("in");
       this.setState({
         background: imageObject.lightRain
       })
       return;
     }
     if (query.includes("moderate rain")) {
-      console.log("in");
       this.setState({
         background: imageObject.moderateRain
       })
       return;
     }
     if (query.includes("heavy rain")) {
-      console.log("in");
       this.setState({
         background: imageObject.HeavyRain
       })
       return;
     }
     if (query.includes("snow")) {
-      console.log("in");
       this.setState({
         background: imageObject.lightSnow
       })
       return;
     }
     if (query.includes("clouds")) {
-      console.log("in");
       this.setState({
         background: imageObject.scatteredCloud
       })
@@ -135,7 +135,7 @@ class App extends Component {
 
   render() {
     return (
-      <HashRouter>
+      <BrowserRouter>
       <div className="App">
         <Jumbotron ref={this.jumbo}>
           <Container>
@@ -162,12 +162,12 @@ class App extends Component {
               <Route exact path ="/link3"
               render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
               />
-              <Route exact path ="/CA"
+              <Route exact path ="/search/:query"
               render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
               />
             </Switch>
       </div>
-      </HashRouter>
+      </BrowserRouter>
       
     );
   }

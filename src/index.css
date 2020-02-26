@@ -32,7 +32,7 @@ div.jumbotron {
   /* background-image: url(./images/Humpback.jpg); */
   height: 32%;
   background-color: white;
-  border: 10px solid grey;
+  border: 7px solid grey;
   border-radius: 0px;
 }
 
@@ -85,18 +85,17 @@ div.container {
 #greetingCard {
   margin:auto;
   text-align: center;
-  width: 80%;
   font-family: "Alegreya" , serif;
   font-weight: 700;
-  border: 10px solid grey;
+  border: 7px solid grey;
   background-color: white;
 }
 
 h5#greetingBody {
-  padding: .25rem;
+  padding: 5px;
   font-family: "Alegreya" , serif;
   font-weight: 700;
-  padding: .5rem;
+  margin-top: 5px;
 }
 
 
@@ -185,4 +184,45 @@ input.edit-nav {
   border: 1px solid #ced4da;
   border-radius: .25rem;
   transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+/* Forecast Flex Container*/
+
+#conditions {
+  background-color: #f1f1f1;
+  margin: auto;
+  text-align: center
+}
+
+#conditions-header {
+  font-family: "Alegreya", serif;
+  font-weight: 700;
+}
+
+#conditions-desc {
+  font-family: "Alegreya", serif;
+  font-weight: 700;
+  margin-top: -5px;
+}
+#forecast-flex {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#forecast-flex div {
+  font-family: "Alegreya", serif;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f1f1;
+  opacity: 90%;
+  width: 125px;
+  height: 125px;
+  margin: 15px;
+  text-align: center;
+  line-height: 25px;
+  font-size: 22px;
 }

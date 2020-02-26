@@ -38,7 +38,7 @@ const SearchForm = (props) => {
       </FormGroup>
       {' '}
       <Button id="searchButton" type="submit">
-        search
+        Search
       </Button>
     </Form>
   )
