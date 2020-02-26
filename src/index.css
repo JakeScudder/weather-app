@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya:700 |Fredoka+One&display=swap");
 
+
 html, body {
   margin: 0;
   height: 100%;
@@ -30,7 +31,7 @@ div.jumbotron {
   margin: auto;
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
-  height: 32%;
+  height: 35%;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
@@ -66,6 +67,7 @@ div.container {
 #searchButton {
   margin-left: auto;
   margin-right: auto;
+  height: 35px;
   width: 50%;
   margin-top: -11px;
   background-color: #378dea;
@@ -132,7 +134,12 @@ div#forecast {
 
 #mainNav {
   display: inline;
-  
+  position: relative;
+}
+
+#nav-container {
+  position: relative;
+  height: 75px;
 }
 
 #mainNav ul {
@@ -143,6 +150,40 @@ div#forecast {
   text-align: center;
   padding: 0px;
   
+}
+
+#form-div {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 5px;
+  width: 60%;
+}
+
+#favorite-options {
+  text-align-last: center;
+  height: 35px;
+  width: 100%;
+  background-color: #378dea;
+  border-color: #378dea;
+}
+
+input.edit-nav {
+  display: block;
+  margin-top: -5px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 85%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
 #mainNav ul a {
@@ -166,25 +207,7 @@ div#forecast {
   text-decoration: none;
 }
 
-input.edit-nav {
-  display: block;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: 85%;
-  height: calc(1.5em + .75rem + 2px);
-  padding: .375rem .75rem;
-  font-size: 1rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: .25rem;
-  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
+
 
 /* Forecast Flex Container*/
 

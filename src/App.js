@@ -7,6 +7,7 @@ import { Container, Jumbotron } from 'react-bootstrap';
 import SearchForm from './components/SearchForm';
 import Results from './components/Results';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 
 //Fetch
 import axios from 'axios';
@@ -121,12 +122,12 @@ class App extends Component {
 
   handleJumboStyle = () => {
     if (this.state.jumboSmall) {
-      this.jumbo.current.style.height = "37.5%";
+      this.jumbo.current.style.height = "40%";
       this.setState({
         jumboSmall: false
       })
     } else {
-      this.jumbo.current.style.height = "32%";
+      this.jumbo.current.style.height = "35%";
       this.setState({
         jumboSmall: true
       })
@@ -167,6 +168,7 @@ class App extends Component {
               />
             </Switch>
       </div>
+      <Footer />
       </BrowserRouter>
       
     );
