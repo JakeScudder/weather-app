@@ -4,6 +4,8 @@ import {
 } from 'react-bootstrap';
 import Forecast from './Forecast';
 
+import Footer from './Footer';
+
 
 class Results extends Component {
   constructor (props) {
@@ -23,7 +25,7 @@ class Results extends Component {
   setBackgroundImg = () => {
     this.backgroundRef.current.style.background = this.props.background;
     this.backgroundRef.current.style.backgroundSize = "cover";
-    this.backgroundRef.current.style.height = "75%";
+    this.backgroundRef.current.style.height = "52.5%";
   }
 
  render() {
@@ -31,6 +33,7 @@ class Results extends Component {
   return (
     <Container ref={this.backgroundRef}  id="resultsContainer">
       <Forecast data={this.props.data} />
+      <Footer />
     </Container>
     )
  }

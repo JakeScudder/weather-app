@@ -31,7 +31,7 @@ div.jumbotron {
   margin: auto;
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
-  height: 35%;
+  height: 37.5%;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
@@ -124,10 +124,8 @@ div#forecast {
 
 }
 
-/* Results Background Image*/
+#resultsContainer {
 
-#tree {
-  height: 150px;
 }
 
 /* Nav Bar */
@@ -169,7 +167,7 @@ div#forecast {
 
 input.edit-nav {
   display: block;
-  margin-top: -5px;
+  margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -211,6 +209,10 @@ input.edit-nav {
 
 /* Forecast Flex Container*/
 
+#forecast-container {
+  height: 340px;
+}
+
 #conditions {
   background-color: #f1f1f1;
   margin: auto;
@@ -242,10 +244,19 @@ input.edit-nav {
   align-items: center;
   background-color: #f1f1f1;
   opacity: 90%;
-  width: 125px;
-  height: 125px;
+  width: 100px;
+  height: 100px;
   margin: 15px;
   text-align: center;
   line-height: 25px;
   font-size: 22px;
+}
+
+/* Footer */
+
+#footer {
+  background-color: grey;
+  height: 15%;
+  position: absolute;
+  width: 100%;
 }

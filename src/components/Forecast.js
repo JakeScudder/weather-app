@@ -45,10 +45,10 @@ const Forecast = (props) => {
   }
 
   return (
-    <div>
+    <div id="forecast-container">
       <div id="conditions">
-        <h3 id="conditions-header">{`Current Conditions in ${data.name}:`}</h3>
-        <h4 id="conditions-desc">{descCapitalized}</h4>
+        <h5 id="conditions-header">{`Current Conditions in ${data.name}:`}</h5>
+        <h5 id="conditions-desc">{descCapitalized}</h5>
       </div>
       <div id="forecast-flex">
         <div>{`Temp is: ${currentTemp}°`}</div>
@@ -58,16 +58,6 @@ const Forecast = (props) => {
       </div>
     </div>
   )
-
-  // return (
-  //   <div id="forecast">
-  //     <h5 className="h5Forecast">{`${descCapitalized}, currently ${currentTemp}°`}</h5>
-  //     <h5 className="h5Forecast">{`Feels Like: ${feels}°`}</h5>
-  //     <h5 className="h5Forecast">{`Low Today: ${low}°`}</h5>
-  //     <h5 className="h5Forecast">{`High Today: ${high}°`}</h5>
-  //     {/* <h5>{`${currentTemp}°`}</h5> */}
-  //   </div>
-  // )
 }
 
 export default Forecast;
