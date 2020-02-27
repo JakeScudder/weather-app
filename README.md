@@ -1,7 +1,7 @@
 <div align="center">
 
 ## Weather App
-<img style:{margin-left="auto" margin-right="auto"} src="https://www.starfm.co.ke/wp-content/uploads/2019/12/new-history-forecast-bulk.png" height="200" width="200">
+<img margin-left="auto" margin-right="auto" src="https://www.starfm.co.ke/wp-content/uploads/2019/12/new-history-forecast-bulk.png" height="200" width="200">
 </img>
 
 ### create-react-app and react-bootstrap
