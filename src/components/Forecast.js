@@ -47,8 +47,8 @@ const Forecast = (props) => {
   return (
     <div id="forecast-container">
       <div id="conditions">
-        <h5 id="conditions-header">{`Current Conditions in ${data.name}:`}</h5>
-        <h5 id="conditions-desc">{descCapitalized}</h5>
+        <h6 id="conditions-header">{`Current Conditions in ${data.name}:`}</h6>
+        <h6 id="conditions-desc">{descCapitalized}</h6>
       </div>
       <div id="forecast-flex">
         <div>{`Temp is: ${currentTemp}°`}</div>

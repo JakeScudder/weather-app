@@ -3,17 +3,20 @@
 
 html, body {
   margin: 0;
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 div#root {
   margin: 0;
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 div.App {
   margin: 0;
-  height: 100%;
+  min-height: 100%;
+  position: relative;
 }
 
 #appTitle {
@@ -29,15 +32,17 @@ div.App {
 
 div.jumbotron {
   margin: auto;
+  position: relative;
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
-  height: 37.5%;
+  min-height: 47%;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
 }
 
 div.container {
+  position: relative;
   width: 100%;
   margin-right: auto;
   margin-left: auto;
@@ -67,9 +72,10 @@ div.container {
 #searchButton {
   margin-left: auto;
   margin-right: auto;
-  height: 35px;
+  height: 25px;
   width: 50%;
   margin-top: -11px;
+  padding: 0px;
   background-color: #378dea;
   border-color: #378dea;
 }
@@ -144,10 +150,10 @@ div#forecast {
   margin-top: 10px;
   margin-left:  auto;
   margin-right:  auto;
-  width: 90%;
+  margin-bottom: 10px;
+  width: 95%;
   text-align: center;
   padding: 0px;
-  
 }
 
 #form-div {
@@ -159,7 +165,7 @@ div#forecast {
 
 #favorite-options {
   text-align-last: center;
-  height: 35px;
+  height: 25px;
   width: 100%;
   background-color: #378dea;
   border-color: #378dea;
@@ -188,7 +194,7 @@ input.edit-nav {
   background: grey;
   color: black;
   border-radius: 3px;
-  padding: 5px;
+  padding: 2px;
   font-family: "Alegreya" , serif;
   font-weight: 700;
   text-align: center;
@@ -197,7 +203,7 @@ input.edit-nav {
 
 #mainNav li {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 15px;
 }
 
 #mainNav .active {
@@ -243,7 +249,6 @@ input.edit-nav {
   justify-content: center;
   align-items: center;
   background-color: #f1f1f1;
-  opacity: 90%;
   width: 100px;
   height: 100px;
   margin: 15px;

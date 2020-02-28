@@ -36,17 +36,20 @@ const Nav = (props) => {
     if (firstOption) {
       setNav1(input);
       Cookies.set('nav1', input, {expires: 30});
-      abbreviate(input);
+      let url = abbreviate(input);
+      setUrl1(url);
     }
     if (secondOption) {
       setNav2(input);
       Cookies.set('nav2', input, {expires: 30});
-      setUrl2(input);
+      let url = abbreviate(input);
+      setUrl2(url);
     }
     if (thirdOption) {
       setNav3(input);
       Cookies.set('nav3', input, {expires: 30});
-      setUrl3(input);
+      let url = abbreviate(input);
+      setUrl3(url);
     }
   }
 
@@ -54,9 +57,9 @@ const Nav = (props) => {
     if (word.length > 10) {
       let short = word.substring(0, 10);
       let format = `${short}..`
-      setUrl1(format);
+      return format;
     } else {
-      setUrl1(word);
+      return word;
     }
   }
 

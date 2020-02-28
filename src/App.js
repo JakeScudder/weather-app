@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 //Bootstraps
 import { Container, Jumbotron } from 'react-bootstrap';
 
@@ -99,7 +99,7 @@ class App extends Component {
     this.setState({
       loading: true
     })
-    axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${apiKey}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${apiKey}`)
       .then(res => {
         let query = res.data.weather[0].description
         this.setState({
@@ -121,12 +121,12 @@ class App extends Component {
 
   handleJumboStyle = () => {
     if (this.state.jumboSmall) {
-      this.jumbo.current.style.height = "44%";
+      this.jumbo.current.style.height = "47.5%";
       this.setState({
         jumboSmall: false
       })
     } else {
-      this.jumbo.current.style.height = "37.5%";
+      this.jumbo.current.style.height = "40%";
       this.setState({
         jumboSmall: true
       })
@@ -135,11 +135,11 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <HashRouter >
       <div className="App">
         <Jumbotron ref={this.jumbo}>
           <Container>
-            <h3 id="appTitle">Weather The Elements</h3>
+            <h5 id="appTitle">Weather The Elements</h5>
             <SearchForm 
               handleSearch={this.handleWeatherFetch}
             />
@@ -167,7 +167,7 @@ class App extends Component {
               />
             </Switch>
       </div>
-      </BrowserRouter>
+      </HashRouter>
       
     );
   }
