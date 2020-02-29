@@ -55,7 +55,7 @@ const Nav = (props) => {
 
   const abbreviate = (word) => {
     if (word.length > 10) {
-      let short = word.substring(0, 10);
+      let short = word.substring(0, 8);
       let format = `${short}..`
       return format;
     } else {

@@ -3,18 +3,25 @@
 
 html, body {
   margin: 0;
+  height: 100%;
   min-height: 100%;
+  position: relative;
+}
+
+body {
   position: relative;
 }
 
 div#root {
   margin: 0;
+  height: 100%;
   min-height: 100%;
   position: relative;
 }
 
 div.App {
   margin: 0;
+  height: 100%;
   min-height: 100%;
   position: relative;
 }
@@ -35,7 +42,7 @@ div.jumbotron {
   position: relative;
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
-  min-height: 47%;
+  min-height: 40%;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
@@ -131,7 +138,9 @@ div#forecast {
 }
 
 #resultsContainer {
-
+  height: 60%;
+  min-height: 50%;
+  position: relative;
 }
 
 /* Nav Bar */
@@ -215,14 +224,14 @@ input.edit-nav {
 
 /* Forecast Flex Container*/
 
-#forecast-container {
-  height: 340px;
-}
+/* #forecast-container {
+} */
 
 #conditions {
   background-color: #f1f1f1;
   margin: auto;
-  text-align: center
+  text-align: center;
+  position: relative;
 }
 
 #conditions-header {
@@ -240,6 +249,7 @@ input.edit-nav {
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 #forecast-flex div {
@@ -261,7 +271,7 @@ input.edit-nav {
 
 #footer {
   background-color: grey;
-  height: 15%;
-  position: absolute;
+  height: 13.5%;
+  position: relative;
   width: 100%;
 }
