@@ -120,21 +120,21 @@ class App extends Component {
       })
   }
 
-  handleJumboStyle = () => {
-    if (this.state.jumboSmall) {
-      this.jumbo.current.style.height = "47%";
-      // let container = document.getElementById("resultsContainer");
-      // container.style.height = "45%";
-      this.setState({
-        jumboSmall: false
-      })
-    } else {
-      this.jumbo.current.style.height = "40%";
-      this.setState({
-        jumboSmall: true
-      })
-    }
-  }
+  // handleJumboStyle = () => {
+  //   if (this.state.jumboSmall) {
+  //     this.jumbo.current.style.height = "47%";
+  //     // let container = document.getElementById("resultsContainer");
+  //     // container.style.height = "45%";
+  //     this.setState({
+  //       jumboSmall: false
+  //     })
+  //   } else {
+  //     this.jumbo.current.style.height = "40%";
+  //     this.setState({
+  //       jumboSmall: true
+  //     })
+  //   }
+  // }
 
   render() {
     return (

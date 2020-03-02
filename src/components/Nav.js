@@ -7,7 +7,7 @@ const Nav = (props) => {
   // let textInput = React.createRef();
 
   const [nav1, setNav1] = useState(Cookies.getJSON('nav1') || "Virginia");
-  const [url1, setUrl1] = useState(Cookies.getJSON('nav1') || "Virginia");
+  const [url1, setUrl1] = useState(Cookies.getJSON('url1') || "Virginia");
 
   const [nav2, setNav2] = useState(Cookies.getJSON('nav2') || "Maine");
   const [url2, setUrl2] = useState(Cookies.getJSON('url2') || "Maine");
@@ -94,17 +94,17 @@ const Nav = (props) => {
       console.log("an option is selected")
       if (!showing) {
         setShowing(true);
-        props.jumbo();
+        // props.jumbo();
       }
     } else {
       setShowing(false);
-      props.jumbo();
+      // props.jumbo();
     }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.jumbo();
+    // props.jumbo();
     changeLink();
     setShowing(false);
     setInput("");
@@ -125,10 +125,10 @@ const Nav = (props) => {
     <div id="form-div">
       <form id="form-options"> 
         <select id="favorite-options" onChange={showHideInput}>
-          <option id="homeOption">♥</option>
-          <option id="first">Change First Link</option>
-          <option id="second">Change Second Link</option>
-          <option id="third">Change Third Link</option>
+          <option id="homeOption">♥Change Links</option>
+          <option id="first">Change 1st</option>
+          <option id="second">Change 2nd</option>
+          <option id="third">Change 3rd</option>
         </select>
       </form>
       <form onSubmit={handleSubmit}  style={{display: showing ? 'block' : "none"}}>
