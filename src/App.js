@@ -7,6 +7,7 @@ import { Container, Jumbotron } from 'react-bootstrap';
 import SearchForm from './components/SearchForm';
 import Results from './components/Results';
 import Nav from './components/Nav';
+import Footer from './components/Footer';
 
 //Fetch
 import axios from 'axios';
@@ -151,23 +152,24 @@ class App extends Component {
         </Jumbotron>
         {/* <Results data={this.state.results} background={this.state.background}/> */}
         <Switch>
-              <Route exact path ="/"
-              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-              />
-              <Route exact path ="/link1"
-              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-              />
+          <Route exact path ="/"
+          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+          />
+          <Route exact path ="/link1"
+          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+          />
 
-              <Route exact path ="/link2"
-              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-              />
-              <Route exact path ="/link3"
-              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-              />
-              <Route exact path ="/search/:query"
-              render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-              />
-            </Switch>
+          <Route exact path ="/link2"
+          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+          />
+          <Route exact path ="/link3"
+          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+          />
+          <Route exact path ="/search/:query"
+          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+          />
+        </Switch>
+        <Footer />
       </div>
       </HashRouter>
       
