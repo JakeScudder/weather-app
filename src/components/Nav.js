@@ -10,10 +10,10 @@ const Nav = (props) => {
   const [url1, setUrl1] = useState(Cookies.getJSON('nav1') || "Virginia");
 
   const [nav2, setNav2] = useState(Cookies.getJSON('nav2') || "Maine");
-  const [url2, setUrl2] = useState(Cookies.getJSON('nav2') || "Maine");
+  const [url2, setUrl2] = useState(Cookies.getJSON('url2') || "Maine");
 
   const [nav3, setNav3] = useState(Cookies.getJSON('nav3') || "Florida");
-  const [url3, setUrl3] = useState(Cookies.getJSON('nav3') || "Florida");
+  const [url3, setUrl3] = useState(Cookies.getJSON('url3') || "Florida");
 
   const[input, setInput] = useState("");
   const[showing, setShowing] = useState(false)
@@ -37,18 +37,21 @@ const Nav = (props) => {
       setNav1(input);
       Cookies.set('nav1', input, {expires: 30});
       let url = abbreviate(input);
+      Cookies.set('url1', url, {expires: 30});
       setUrl1(url);
     }
     if (secondOption) {
       setNav2(input);
       Cookies.set('nav2', input, {expires: 30});
       let url = abbreviate(input);
+      Cookies.set('url2', url, {expires: 30});
       setUrl2(url);
     }
     if (thirdOption) {
       setNav3(input);
       Cookies.set('nav3', input, {expires: 30});
       let url = abbreviate(input);
+      Cookies.set('url3', url, {expires: 30});
       setUrl3(url);
     }
   }
