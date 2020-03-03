@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Alegreya:700 |Fredoka+One&display=swap");
 
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 
 html, body {
   margin: 0;
@@ -273,6 +275,39 @@ input.edit-nav {
 #footer {
   background-color: grey;
   height: 10%;
-  position: relative;
+  position: fixed;
+  bottom: 0;
   width: 100%;
+  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
+  display: flex;
+  overflow-x: auto;
+}
+
+.footer-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  min-width: 25%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: "Alegreya" , serif;
+  font-size: 20px;
+  color: black;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.1s ease-in-out;
+}
+
+.footer-link:hover {
+  background-color: lightgrey;
+  color: #26942e;
+}
+/* 
+.footer-link--active {
+  color: #26942e;
+} */
+
+.footer-icon {
+  font-size: 20px;
 }

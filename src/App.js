@@ -23,7 +23,7 @@ class App extends Component {
     this.state = {
       location: "",
       results: [],
-      query: "",
+      conditions: "",
       background: "",
       jumboSmall: true,
       loading: true
@@ -36,7 +36,7 @@ class App extends Component {
   }
 
   
- setBackground = (query = "clear sky") => {
+ setBackground = (conditions = "clear sky") => {
     const imageObject = {
       clearSky: "url(https://live.staticflickr.com/4671/40268815811_1244a6b370_z.jpg)",
       lightRain: "url(https://live.staticflickr.com/3906/14674848444_e04aeab462.jpg)",
@@ -51,43 +51,43 @@ class App extends Component {
     this.setState({
       background: imageObject.clearSky
     })
-    if (query.includes("clear")) {
+    if (conditions.includes("clear")) {
       this.setState({
         background: imageObject.clearSky
       })
       return;
     }
-    if (query.includes("rain")) {
+    if (conditions.includes("rain")) {
       this.setState({
         background: imageObject.lightRain
       })
       return;
     }
-    if (query.includes("light rain")) {
+    if (conditions.includes("light rain")) {
       this.setState({
         background: imageObject.lightRain
       })
       return;
     }
-    if (query.includes("moderate rain")) {
+    if (conditions.includes("moderate rain")) {
       this.setState({
         background: imageObject.moderateRain
       })
       return;
     }
-    if (query.includes("heavy rain")) {
+    if (conditions.includes("heavy rain")) {
       this.setState({
         background: imageObject.HeavyRain
       })
       return;
     }
-    if (query.includes("snow")) {
+    if (conditions.includes("snow")) {
       this.setState({
         background: imageObject.lightSnow
       })
       return;
     }
-    if (query.includes("clouds")) {
+    if (conditions.includes("clouds")) {
       this.setState({
         background: imageObject.scatteredCloud
       })
@@ -98,17 +98,18 @@ class App extends Component {
   // Weather API call
   handleWeatherFetch = (query = "charlottesville") => {
     this.setState({
-      loading: true
+      loading: true,
+      location: query,
     })
     axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${apiKey}`)
       .then(res => {
-        let query = res.data.weather[0].description
+        let conditions = res.data.weather[0].description
         this.setState({
           results: res.data,
-          query: query,
+          conditions: conditions,
           loading: false
         })
-        this.setBackground(this.state.query);
+        this.setBackground(this.state.conditions);
         // setTimeout(() => {
         //   console.log(this.state.query);
         //   this.handleFlickr(this.state.query);
