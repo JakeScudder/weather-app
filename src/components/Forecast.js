@@ -50,11 +50,13 @@ const Forecast = (props) => {
         <h6 id="conditions-header">{`Current Conditions in ${data.name}:`}</h6>
         <h6 id="conditions-desc">{descCapitalized}</h6>
       </div>
-      <div id="forecast-flex">
-        <div>{`Temp is: ${currentTemp}°`}</div>
-        <div>{`Feels Like: ${feels}°`}</div>
-        <div>{`Low Today: ${low}°`}</div>
-        <div>{`High Today: ${high}°`}</div>
+      <div id="forecast-div">
+        <div id="forecast-flex">
+          <div>{`Temp is: ${currentTemp}°`}</div>
+          <div>{`Feels Like: ${feels}°`}</div>
+          <div>{`Low Today: ${low}°`}</div>
+          <div>{`High Today: ${high}°`}</div>
+        </div>
       </div>
     </div>
   )

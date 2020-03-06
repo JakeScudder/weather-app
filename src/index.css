@@ -44,19 +44,24 @@ div.jumbotron {
   position: relative;
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
-  min-height: 40%;
+  height: 40%;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
 }
 
 div.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
   width: 100%;
+  height: 100%;
   margin-right: auto;
   margin-left: auto;
   padding-right: 0px;
   padding-left: 0px;
+  padding-bottom: 30px;
 }
 
 
@@ -247,7 +252,20 @@ input.edit-nav {
   font-weight: 700;
   margin-top: -5px;
 }
+
+#forecast-container {
+  height: 100%;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+#forecast-div {
+  height: 100%;
+  margin: auto;
+}
 #forecast-flex {
+  margin: auto;
+  height: 80%;
+  max-width: 320px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
