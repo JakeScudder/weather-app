@@ -12,6 +12,7 @@ import Footer from './components/Footer';
 //Fetch
 import axios from 'axios';
 import apiKey from './config';
+const cityData = require('./city.list.json');
 
 //Images
 
@@ -21,7 +22,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      location: "",
+      locationCode: "",
       results: [],
       conditions: "",
       background: "",
@@ -95,13 +96,25 @@ class App extends Component {
     } 
   }
 
+  //Runs fetch api with the city code to get precise weather
+  findCityCode = (city = 'Charlottesville', state = "VA") => {
+    console.log(city, state);
+    for (let i = 0; i < cityData.length; i++) {
+      if (city === cityData[i].name && state === cityData[i].state) {
+        let code = cityData[i].id
+        console.log(cityData[i].id);
+        this.handleWeatherFetch(code)
+      }
+    }
+  }
+
   // Weather API call
-  handleWeatherFetch = (query = "charlottesville") => {
+  handleWeatherFetch = (code = 4752031) => {
     this.setState({
       loading: true,
-      location: query,
+      locationCode: code,
     })
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=imperial&APPID=${apiKey}`)
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${code}&units=imperial&APPID=${apiKey}`)
       .then(res => {
         let conditions = res.data.weather[0].description
         this.setState({
@@ -109,45 +122,35 @@ class App extends Component {
           conditions: conditions,
           loading: false
         })
-        this.setBackground(this.state.conditions);
-        // setTimeout(() => {
-        //   console.log(this.state.query);
-        //   this.handleFlickr(this.state.query);
-        // }, 1000)
-        
+        this.setBackground(this.state.conditions);     
       })
       .catch(error => {
         console.log('Error fetching the weather data:', error)
       })
   }
 
-  // handleJumboStyle = () => {
-  //   if (this.state.jumboSmall) {
-  //     this.jumbo.current.style.height = "47%";
-  //     // let container = document.getElementById("resultsContainer");
-  //     // container.style.height = "45%";
-  //     this.setState({
-  //       jumboSmall: false
-  //     })
-  //   } else {
-  //     this.jumbo.current.style.height = "40%";
-  //     this.setState({
-  //       jumboSmall: true
-  //     })
-  //   }
-  // }
+  //Taking the search parameters, separating them into City and State in order to then find the city code
+  handleSearch = (query) => {
+    let array = query.split(',');
+    let city = array[0];
+    let state = array[1];
+    state = state.replace(/\s+/g, '');
+    let cityCapitalized = city.charAt(0).toUpperCase() + city.slice(1);
+    state = state.toUpperCase();
+    this.findCityCode(cityCapitalized, state);
+  }
 
   render() {
     return (
       <HashRouter >
       <div className="App">
-        <Jumbotron ref={this.jumbo}>
+        <Jumbotron>
           <Container>
             <h5 id="appTitle">Weather The Elements</h5>
             <SearchForm 
-              handleSearch={this.handleWeatherFetch}
+              handleSearch={this.handleSearch}
             />
-            <Nav jumbo={this.handleJumboStyle} fetchNav={this.handleWeatherFetch}/>
+            <Nav fetchNav={this.handleWeatherFetch}/>
             
           </Container>
         </Jumbotron>

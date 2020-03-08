@@ -31,7 +31,7 @@ const SearchForm = (props) => {
         id="searchBar" 
         type="search" 
         name="search" 
-        placeholder="What's the weather like in..." 
+        placeholder="Search for: City, State" 
         value={search}
         onChange={handleChange}
         />
