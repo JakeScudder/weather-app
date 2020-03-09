@@ -133,7 +133,7 @@ const Nav = (props) => {
       </form>
       <form onSubmit={handleSubmit}  style={{display: showing ? 'block' : "none"}}>
           { (firstOption || secondOption || thirdOption)
-          ? <input id="new-link" type="text" placeholder="New Location is..." ref={textInput => textInput && textInput.focus()} className="edit-nav" value={input} onChange={handleChange}/>
+          ? <input id="new-link" type="text" placeholder="i.e Denver, CO" ref={textInput => textInput && textInput.focus()} className="edit-nav" value={input} onChange={handleChange}/>
           : null 
           } 
       </form>

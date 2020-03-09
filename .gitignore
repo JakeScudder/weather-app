@@ -2,6 +2,8 @@
 
 # dependencies
 /node_modules
+/src/config.js
+/src/accuweather.js
 /.pnp
 .pnp.js
 

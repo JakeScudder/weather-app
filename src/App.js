@@ -23,6 +23,8 @@ class App extends Component {
     super();
     this.state = {
       locationCode: "",
+      city: "",
+      state: "",
       results: [],
       conditions: "",
       background: "",
@@ -99,6 +101,10 @@ class App extends Component {
   //Runs fetch api with the city code to get precise weather
   findCityCode = (city = 'Charlottesville', state = "VA") => {
     console.log(city, state);
+    this.setState({
+      city: city,
+      state: state,
+    })
     for (let i = 0; i < cityData.length; i++) {
       if (city === cityData[i].name && state === cityData[i].state) {
         let code = cityData[i].id
@@ -150,14 +156,14 @@ class App extends Component {
             <SearchForm 
               handleSearch={this.handleSearch}
             />
-            <Nav fetchNav={this.handleWeatherFetch}/>
+            <Nav fetchNav={this.handleSearch}/>
             
           </Container>
         </Jumbotron>
         {/* <Results data={this.state.results} background={this.state.background}/> */}
         <Switch>
           <Route exact path ="/"
-          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
+          render={(props) => <Results {...props} city={this.state.city} state={this.state.state} data={this.state.results} background={this.state.background} /> }
           />
           <Route exact path ="/link1"
           render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }

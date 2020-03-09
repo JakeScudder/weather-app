@@ -25,6 +25,9 @@ class Results extends Component {
   setBackgroundImg = () => {
     this.backgroundRef.current.style.background = this.props.background;
     this.backgroundRef.current.style.backgroundSize = "cover";
+    this.backgroundRef.current.style.minHeight = "50%";
+    this.backgroundRef.current.style.position = "relative";
+
   }
 
  render() {

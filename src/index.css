@@ -24,6 +24,7 @@ div#root {
 div.App {
   margin: 0;
   height: 100%;
+  overflow: auto;
   min-height: 100%;
   position: relative;
 }
@@ -45,6 +46,7 @@ div.jumbotron {
   padding: 0px;
   /* background-image: url(./images/Humpback.jpg); */
   height: 40%;
+  min-height: 220px;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
@@ -80,6 +82,7 @@ div.container {
 
 #searchBar {
   width: 100%;
+  padding: 0;
   text-align: center;
 }
 
@@ -147,6 +150,7 @@ div#forecast {
 
 #resultsContainer {
   height: 50%; 
+  min-height: 50%;
   position: relative;
 }
 
@@ -295,7 +299,8 @@ input.edit-nav {
 #footer {
   background-color: grey;
   height: 10%;
-  position: fixed;
+  min-height: 10%;
+  position: relative;
   bottom: 0;
   width: 100%;
   box-shadow: 0 0 3px rgba(0, 0, 0, .2);

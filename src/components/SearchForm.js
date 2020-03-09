@@ -31,7 +31,7 @@ const SearchForm = (props) => {
         id="searchBar" 
         type="search" 
         name="search" 
-        placeholder="Search for: City, State" 
+        placeholder="City, State (i.e. Denver, CO)" 
         value={search}
         onChange={handleChange}
         />

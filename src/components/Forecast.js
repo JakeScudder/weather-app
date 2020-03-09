@@ -1,6 +1,10 @@
 import React from 'react';
 
+// import axios from 'axios';
+// import accuKey from '../accuweather.js';
+
 const Forecast = (props) => {
+
   let data = props.data
   console.log(data);
 
@@ -69,6 +73,33 @@ const Forecast = (props) => {
     high = Math.trunc(rawTemp)
   }
 
+  // //Fetch actual Tide Data with Location Key
+  // const fetchTides = (locationKey) => {
+  //   axios.get(`https://cors-anywhere.herokuapp.com/http://apidev.accuweather.com/tidal/v1/forecasts/1day/${locationKey}?apikey=${accuKey}`)
+  //   .then(response => {
+  //     console.log(response)
+  //   })
+  //   .catch(error => {
+  //     console.log('Error fetching the weather data:', error)
+  //   })
+    
+  // }
+
+  // //Tide Api Fetch Location Key
+  // const handleTideLocation = (location) => {
+  //   axios.get(`https://cors-anywhere.herokuapp.com/http://dataservice.accuweather.com/locations/v1/cities/search.json?apikey=${accuKey}&q=${location}&details=true HTTP/1.1`)
+  //     .then(response => {
+  //       console.log(response.data[0].Key);
+  //       let key = response.data[0].Key;
+  //       fetchTides(key)
+  //     })
+  //     .catch(error => {
+  //       console.log('Error fetching the weather data:', error)
+  //     })
+  // }
+
+
+
   if (data.weather && data.weather[0]) {
     description = data.weather[0].description;
     descCapitalized = description.charAt(0).toUpperCase() + description.slice(1);
@@ -77,7 +108,10 @@ const Forecast = (props) => {
     lowTemp();
     highTemp();
     windy();
+    // handleTideLocation(data.name)
   }
+
+  
 
   return (
     <div id="forecast-container">
@@ -89,12 +123,12 @@ const Forecast = (props) => {
         <div id="forecast-flex">
           <div>{`Currently: ${currentTemp}°`}</div>
           <div>{`Feels Like: ${feels}°`}</div>
+          <div>{`Wind: ${direction} ${wind}mph`}</div>
           <div>{`Low Today: ${low}°`}</div>
           <div>{`High Today: ${high}°`}</div>
-          <div>{`Wind: ${direction} ${wind}mph`}</div>
           <div className="tide">
-            <p>{`High Tide: N/A`}</p>
             <p >{`Low Tide: N/A`}</p>
+            <p>{`High Tide: N/A`}</p> 
           </div>
         </div>
       </div>
