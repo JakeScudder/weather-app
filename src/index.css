@@ -307,6 +307,34 @@ div.tide p {
   margin-bottom: 0px;
 }
 
+/* FiveDay  */
+div#five-day {
+  margin: auto;
+  width: 95%;
+}
+
+p.five-day-forecast {
+  margin-top: 5%;
+  background: #f1f1f1;
+  padding: 3px;
+  font-family: "Alegreya" , serif;
+  font-weight: 700;
+}
+
+div#five-day-conditions {
+  background: #f1f1f1;
+  text-align: center;
+  position: relative;
+  font-family: "Alegreya" , serif;
+  font-weight: 700;
+  color: black;
+}
+
+.five-day-header {
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
 /* Footer */
 
 #footer {

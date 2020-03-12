@@ -7,9 +7,10 @@ const Footer = (props) => {
     props.fetch5Day();
   }
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
+    console.log("going home");
   }
+
 
   return (
       <div id="footer">

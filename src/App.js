@@ -24,7 +24,7 @@ class App extends Component {
     super();
     this.state = {
       locationCode: "",
-      city: "",
+      city: "Charlottesville",
       state: "",
       results: [],
       fiveday: [],
@@ -200,7 +200,7 @@ class App extends Component {
           render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
           />
           <Route exact path ="/five-day"
-          render={(props) => <FiveDay {...props} data={this.state.fiveday} background={this.state.background} /> }
+          render={(props) => <FiveDay fetch5Day={this.fetchFiveDay} city={this.state.city} conditions={this.state.conditions} {...props} data={this.state.fiveday} background={this.state.background} /> }
           />
         </Switch>
         <Footer fetch5Day={this.fetchFiveDay} />
