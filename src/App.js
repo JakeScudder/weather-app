@@ -8,6 +8,7 @@ import SearchForm from './components/SearchForm';
 import Results from './components/Results';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
+import FiveDay from './components/FiveDay';
 
 //Fetch
 import axios from 'axios';
@@ -26,6 +27,7 @@ class App extends Component {
       city: "",
       state: "",
       results: [],
+      fiveday: [],
       conditions: "",
       background: "",
       jumboSmall: true,
@@ -146,13 +148,32 @@ class App extends Component {
     this.findCityCode(cityCapitalized, state);
   }
 
+  fetchFiveDay = () => {
+    let code = this.state.locationCode;
+    this.setState({
+      loading: true
+    })
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=${code}&units=imperial&APPID=${apiKey}`)
+      .then(response => {
+        console.log(response)   
+        this.setState({
+          fiveday: response.data,
+          loading: false,
+        }) 
+        this.setBackground(this.state.conditions);  
+      })
+      .catch(error => {
+        console.log('Error fetching the weather data:', error)
+      })
+  }
+
   render() {
     return (
       <HashRouter >
       <div className="App">
         <Jumbotron>
           <Container>
-            <h5 id="appTitle">Weather The Elements</h5>
+            <h5 id="appTitle">BlueJay Weather</h5>
             <SearchForm 
               handleSearch={this.handleSearch}
             />
@@ -178,8 +199,11 @@ class App extends Component {
           <Route exact path ="/search/:query"
           render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
           />
+          <Route exact path ="/five-day"
+          render={(props) => <FiveDay {...props} data={this.state.fiveday} background={this.state.background} /> }
+          />
         </Switch>
-        <Footer />
+        <Footer fetch5Day={this.fetchFiveDay} />
       </div>
       </HashRouter>
       

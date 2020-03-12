@@ -94,17 +94,14 @@ const Nav = (props) => {
       console.log("an option is selected")
       if (!showing) {
         setShowing(true);
-        // props.jumbo();
       }
     } else {
       setShowing(false);
-      // props.jumbo();
     }
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // props.jumbo();
     changeLink();
     setShowing(false);
     setInput("");

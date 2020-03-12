@@ -3,6 +3,10 @@ import { NavLink } from 'react-router-dom';
 
 const Footer = (props) => {
 
+  const handle5Day = (event) => {
+    props.fetch5Day();
+  }
+
   const handleClick = (event) => {
     event.preventDefault();
   }
@@ -13,17 +17,9 @@ const Footer = (props) => {
         <i className="material-icons footer-icon" >dashboard</i>
         <span className="footer-text">Home</span>
         </NavLink>
-        <NavLink to="/hourly" className="footer-link" style={{ textDecoration: 'none' }} onClick={handleClick} >
-        <i className="material-icons footer-icon" >access_time</i>
-        <span className="footer-text">Hourly</span>
-        </NavLink>
-        <NavLink to="/3-day" className="footer-link" style={{ textDecoration: 'none' }} onClick={handleClick}>
-        <i className="material-icons footer-icon">calendar_today</i>
-        <span className="footer-text">3 Day</span>
-        </NavLink>
-        <NavLink to="/5-day" className="footer-link" style={{ textDecoration: 'none' }} onClick={handleClick}>
-        <i className="material-icons footer-icon">calendar_today</i>
-        <span className="footer-text">5 Day</span>
+        <NavLink exact to="five-day" name="five-day" className="footer-link" style={{ textDecoration: 'none' }} onClick={handle5Day} >
+        <i className="material-icons footer-icon" >calendar_today</i>
+        <span className="footer-text">5-Day</span>
         </NavLink>
       </div>
   )

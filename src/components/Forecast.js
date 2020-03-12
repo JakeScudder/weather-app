@@ -6,7 +6,6 @@ import React from 'react';
 const Forecast = (props) => {
 
   let data = props.data
-  console.log(data);
 
   let description;
   let descCapitalized;
@@ -16,6 +15,8 @@ const Forecast = (props) => {
   let feels;
   let low;
   let high;
+  let sunrise;
+  let sunset;
   
   const roundTemp = () => {
     let rawTemp = data.main.temp;
@@ -73,6 +74,13 @@ const Forecast = (props) => {
     high = Math.trunc(rawTemp)
   }
 
+  const getSun = () => {
+    sunrise = data.sys.sunrise
+    sunrise = new Date(sunrise * 1000).toLocaleTimeString();
+    sunset = data.sys.sunset
+    sunset = new Date(sunset * 1000).toLocaleTimeString();
+  }
+
   // //Fetch actual Tide Data with Location Key
   // const fetchTides = (locationKey) => {
   //   axios.get(`https://cors-anywhere.herokuapp.com/http://apidev.accuweather.com/tidal/v1/forecasts/1day/${locationKey}?apikey=${accuKey}`)
@@ -108,6 +116,7 @@ const Forecast = (props) => {
     lowTemp();
     highTemp();
     windy();
+    getSun();
     // handleTideLocation(data.name)
   }
 
@@ -127,8 +136,8 @@ const Forecast = (props) => {
           <div>{`Low Today: ${low}°`}</div>
           <div>{`High Today: ${high}°`}</div>
           <div className="tide">
-            <p >{`Low Tide: N/A`}</p>
-            <p>{`High Tide: N/A`}</p> 
+            <p >{`Sunrise: ${sunrise}`}</p>
+            <p>{`Sunset: ${sunset}`}</p> 
           </div>
         </div>
       </div>
