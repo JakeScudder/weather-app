@@ -3,6 +3,7 @@ import {
   Container,
 } from 'react-bootstrap';
 
+
 class FiveDay extends Component {
   constructor (props) {
     super(props);
@@ -13,7 +14,10 @@ class FiveDay extends Component {
   }
 
   componentDidMount() {
-    this.props.fetch5Day();
+    console.log("mounted");
+    setTimeout(() => {
+      this.props.fetch5Day();
+    }, 1000)
   }
   
   waitForIt = () => {
@@ -45,20 +49,33 @@ class FiveDay extends Component {
       data = this.props.data.list
       console.log(data);
       let count = 1;
+      let countTwo = 10;
+      let countThree = 20;
+      let countFour = 30;
       for (let i = 5; i < data.length; i+= 8) {
         let predictedTemp = data[i].main.temp;
-        let high = data[i].main.temp_max;
-        let low = data[i].main.temp_min;
+        // let high = data[i].main.temp_max;
+        // let low = data[i].main.temp_min;
         predictedTemp = this.adjustTemp(predictedTemp)
-        high = this.adjustTemp(high)
-        low = this.adjustTemp(low)
+        // high = this.adjustTemp(high)
+        // low = this.adjustTemp(low)
+        let weather = data[i].weather[0].description;
+        weather = weather.charAt(0).toUpperCase() + weather.slice(1);
+        let wind = data[i].wind.speed;
+        wind = this.adjustTemp(wind);
         let d = new Date();
         let months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
         let month = months[d.getMonth()];
         let day = d.getDate();
         day = day += count;
         count += 1;
-        days.push(<p key ={count} className="five-day-forecast"> {month},{day}: Temp:{predictedTemp}° Low:{low}° High:{high}°</p>) 
+        countTwo += 1;
+        countThree += 1;
+        countFour += 1;
+        days.push(<p key ={count} className="five-day-forecast"> {month} {day}: </p>)
+        days.push(<p key ={countTwo} className="five-day-desc">Temp: {predictedTemp}° </p>) 
+        days.push(<p key ={countThree} className="five-day-desc">Conditions: {weather}</p>) 
+        days.push(<p key ={countFour} className="five-day-desc">Wind: {wind}mph</p>) 
       }
     }
     return (

@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { withRouter } from "react-router";
 
 const Footer = (props) => {
 
@@ -18,7 +19,7 @@ const Footer = (props) => {
         <i className="material-icons footer-icon" >dashboard</i>
         <span className="footer-text">Home</span>
         </NavLink>
-        <NavLink exact to="five-day" name="five-day" className="footer-link" style={{ textDecoration: 'none' }} onClick={handle5Day} >
+        <NavLink to="/five-day" name="five-day" className="footer-link" style={{ textDecoration: 'none' }} onClick={handle5Day} >
         <i className="material-icons footer-icon" >calendar_today</i>
         <span className="footer-text">5-Day</span>
         </NavLink>
@@ -26,4 +27,5 @@ const Footer = (props) => {
   )
 }
 
-export default Footer;
+const FooterWithRouter = withRouter(Footer);
+export default FooterWithRouter;

@@ -314,11 +314,18 @@ div#five-day {
 }
 
 p.five-day-forecast {
-  margin-top: 5%;
+  margin-top: 10%;
   background: #f1f1f1;
   padding: 3px;
   font-family: "Alegreya" , serif;
   font-weight: 700;
+  width: 29%;
+}
+
+p.five-day-desc {
+  background: #f1f1f1;
+  width: 80%;
+  margin-top: -10px;
 }
 
 div#five-day-conditions {
