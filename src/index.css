@@ -308,6 +308,14 @@ div.tide p {
 }
 
 /* FiveDay  */
+
+#fiveDayContainer {
+  height: 50%; 
+  min-height: 50%;
+  position: relative;
+  overflow: auto;
+  animation-delay: 1000ms;
+}
 div#five-day {
   margin: auto;
   width: 95%;
@@ -335,6 +343,7 @@ div#five-day-conditions {
   font-family: "Alegreya" , serif;
   font-weight: 700;
   color: black;
+  
 }
 
 .five-day-header {

@@ -3,6 +3,8 @@ import {
   Container,
 } from 'react-bootstrap';
 
+// import { Animated } from 'react-animated-css';
+
 
 class FiveDay extends Component {
   constructor (props) {
@@ -17,13 +19,13 @@ class FiveDay extends Component {
     console.log("mounted");
     setTimeout(() => {
       this.props.fetch5Day();
-    }, 1000)
+    }, 800)
   }
   
   waitForIt = () => {
     setTimeout(() => {
       this.setBackgroundImg();
-    }, 1000)
+    }, 900)
   }
   
   setBackgroundImg = () => {
@@ -79,16 +81,17 @@ class FiveDay extends Component {
       }
     }
     return (
-      <Container ref={this.backgroundRef}  id="resultsContainer">
-      <div id="five-day-conditions">
-        <h6 className="five-day-header">{`Current Conditions in ${this.props.city}:`}</h6>
-        <h6 className="five-day-header">{this.props.conditions}</h6>
-      </div>
-        <div id="five-day"> 
-          {days}
+      // <Animated animationIn="fadeIn" animationInDelay="500">
+        <Container ref={this.backgroundRef} className="animated fadeIn"  id="fiveDayContainer">
+        <div id="five-day-conditions">
+          <h6 className="five-day-header">{`Current Conditions in ${this.props.city}:`}</h6>
+          <h6 className="five-day-header">{this.props.conditions}</h6>
         </div>
-      </Container>
-      
+          <div id="five-day"> 
+            {days}
+          </div>
+        </Container>
+      //* </Animated> */
     );
   }
 } 
