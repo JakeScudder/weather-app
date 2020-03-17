@@ -64,7 +64,6 @@ div.container {
   margin-left: auto;
   padding-right: 0px;
   padding-left: 0px;
-  padding-bottom: 30px;
 }
 
 
@@ -84,13 +83,14 @@ div.container {
   width: 100%;
   padding: 0;
   text-align: center;
+  margin-top: -20px;
 }
 
 
 #searchButton {
   margin-left: auto;
   margin-right: auto;
-  height: 25px;
+  height: 35px;
   width: 50%;
   margin-top: -11px;
   padding: 0px;
@@ -125,7 +125,9 @@ h5#greetingBody {
 }
 
 
-/* Results Forecast */
+/********* Results Forecast */
+/********* Results Forecast */
+/********* Results Forecast */
 
 div#forecast {
   margin: auto;
@@ -152,10 +154,12 @@ div#forecast {
   height: 50%; 
   min-height: 50%;
   position: relative;
-  overflow: auto;
+  animation-delay: 1000ms;
 }
 
-/* Nav Bar */
+/********** Nav Bar */
+/********** Nav Bar */
+/********** Nav Bar */
 
 #mainNav {
   display: inline;
@@ -168,7 +172,7 @@ div#forecast {
 }
 
 #mainNav ul {
-  margin-top: 10px;
+  margin-top: -5px;
   margin-left:  auto;
   margin-right:  auto;
   margin-bottom: 10px;
@@ -187,11 +191,12 @@ div#forecast {
 #favorite-options {
   text-align-last: center;
   font-size: 16px;
-  height: 40px;
+  height: 35px;
   width: 50%;
   float: left;
   background-color: #378dea;
   border-color: #378dea;
+  margin-left: 5px;
 }
 
 input.edit-nav {
@@ -200,7 +205,8 @@ input.edit-nav {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
-  width: 50%;
+  width: 45%;
+  height: 35px;
   padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
@@ -236,10 +242,11 @@ input.edit-nav {
 
 
 
-/* Forecast Flex Container*/
+/********* Forecast Flex Container*/
+/********* Forecast Flex Container*/
+/********* Forecast Flex Container*/
 
-/* #forecast-container {
-} */
+
 
 #conditions {
   background-color: #f1f1f1;
@@ -265,18 +272,16 @@ input.edit-nav {
   margin-bottom: auto;
 }
 #forecast-div {
-  height: 100%;
   margin: auto;
+  height: 85%;
 }
 #forecast-flex {
-  margin: auto;
-  height: 80%;
-  max-width: 340px;
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
   align-items: center;
   position: relative;
+  height: 90%;
 }
 
 #forecast-flex div {
@@ -291,8 +296,9 @@ input.edit-nav {
   margin: 10px;
   text-align: center;
   line-height: 25px;
-  font-size: 16px;
+  font-size: 14px;
   padding: 5px;
+  box-shadow: -2.5px -2.5px 1px #ded6d6;
 }
 
 #forecast-flex div.tide {
@@ -328,12 +334,14 @@ p.five-day-forecast {
   font-family: "Alegreya" , serif;
   font-weight: 700;
   width: 29%;
+  box-shadow: -2.5px -2.5px #ded6d678;
 }
 
 p.five-day-desc {
   background: #f1f1f1;
   width: 80%;
   margin-top: -10px;
+  box-shadow: -2.5px -2.5px #ded6d678;
 }
 
 div#five-day-conditions {

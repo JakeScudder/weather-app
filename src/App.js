@@ -173,7 +173,7 @@ class App extends Component {
       <div className="App">
         <Jumbotron>
           <Container>
-            <h5 id="appTitle">BlueJay Weather</h5>
+            <h4 id="appTitle">BlueJay Weather</h4>
             <SearchForm 
               handleSearch={this.handleSearch}
             />

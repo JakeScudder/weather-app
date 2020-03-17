@@ -4,7 +4,6 @@ import {
 } from 'react-bootstrap';
 import Forecast from './Forecast';
 
-import { Animated } from 'react-animated-css';
 
 
 class Results extends Component {
@@ -33,11 +32,9 @@ class Results extends Component {
  render() {
    this.waitForIt();
   return (
-    <Animated animationIn="fadeIn" animationInDelay="1000">
-      <Container ref={this.backgroundRef}  id="resultsContainer">
+      <Container ref={this.backgroundRef} className="animated fadeIn" id="resultsContainer">
         <Forecast data={this.props.data} />
       </Container>
-    </Animated>
     )
  }
 };
