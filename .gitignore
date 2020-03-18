@@ -4,6 +4,7 @@
 /node_modules
 /src/config.js
 /src/accuweather.js
+/src/googleKey.js
 /.pnp
 .pnp.js
 

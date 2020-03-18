@@ -6,6 +6,10 @@ import {
   Button
 } from 'react-bootstrap';
 
+import axios from 'axios';
+import googleKey from '../googleKey';
+
+
 import { withRouter } from "react-router";
 
 const SearchForm = (props) => {
@@ -21,7 +25,11 @@ const SearchForm = (props) => {
   }
 
   const handleChange = e => {
-		setSearch(e.target.value);
+    setSearch(e.target.value);
+    axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${e.target.value}&key=${googleKey}&sessiontoken=1234567890`)
+      .then(response => {
+        console.log(response);
+      })
 	}
 
   return (

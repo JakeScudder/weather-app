@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import postscribe from 'postscribe';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 //Bootstraps
 import { Container, Jumbotron } from 'react-bootstrap';
@@ -13,11 +14,9 @@ import FiveDay from './components/FiveDay';
 //Fetch
 import axios from 'axios';
 import apiKey from './config';
+import googleKey from './googleKey';
 const cityData = require('./city.list.json');
 
-//Images
-
-// import oldTree from './images/oldTree.jpeg';
 
 class App extends Component {
   constructor() {
@@ -38,6 +37,7 @@ class App extends Component {
 
   componentDidMount(){
     this.handleWeatherFetch();
+    postscribe('#root', `<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=${googleKey}&libraries=places"></script>`);
   }
 
   
