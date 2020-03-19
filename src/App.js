@@ -178,10 +178,8 @@ class App extends Component {
               handleSearch={this.handleSearch}
             />
             <Nav fetchNav={this.handleSearch}/>
-            
           </Container>
         </Jumbotron>
-        {/* <Results data={this.state.results} background={this.state.background}/> */}
         <Switch>
           <Route exact path ="/"
           render={(props) => <Results {...props} city={this.state.city} state={this.state.state} data={this.state.results} background={this.state.background} /> }

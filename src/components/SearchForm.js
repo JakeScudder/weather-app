@@ -8,27 +8,39 @@ import {
 
 import axios from 'axios';
 import googleKey from '../googleKey';
+import uuid from 'react-uuid'
 
 
 import { withRouter } from "react-router";
 
 const SearchForm = (props) => {
 
-  const [search, setSearch] = useState("")
+  const [search, setSearch] = useState("");
+  const [autofill, setArray] = useState("");
+  const [showing, setShowing] = useState("");
+  const [unique, setUnique] = useState(uuid());
+
 
   const handleSubmit = e => {
     e.preventDefault();
     let searchUrl = `/search/${search}`;
     props.history.push(searchUrl);
 		props.handleSearch(search);
-		setSearch("");
+    setSearch("");
+    setUnique(uuid());
   }
 
   const handleChange = e => {
     setSearch(e.target.value);
-    axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${e.target.value}&key=${googleKey}&sessiontoken=1234567890`)
+
+    axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${e.target.value}&key=${googleKey}&sessiontoken=${unique}`)
       .then(response => {
-        console.log(response);
+        if (response.data.predictions.length > 0) {
+          setShowing(true);
+        } else {
+          setShowing(false);
+        }
+        setArray(response.data.predictions);
       })
 	}
 
@@ -37,14 +49,26 @@ const SearchForm = (props) => {
       <FormGroup id="searchBarContainer">
         <FormControl
         id="searchBar" 
-        type="search" 
+        type="text" 
         name="search" 
         placeholder="City, State (i.e. Denver, CO)" 
         value={search}
         onChange={handleChange}
         />
+        <ul id="autofill" style={{display: showing ? 'block' : "none"}}>
+          { showing && autofill.length > 1? 
+            autofill.slice(0, 4).map(suggestion => {
+              let description = suggestion.description.split(",")
+              description.pop();
+              console.log(description);
+              description = description.join(", ")
+              console.log(description);
+            return <li key={suggestion.id}>{description}</li>
+            })
+            : null
+          }
+        </ul>
       </FormGroup>
-      {' '}
       <Button id="searchButton" type="submit">
         Search
       </Button>
