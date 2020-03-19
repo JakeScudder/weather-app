@@ -22,11 +22,25 @@ const SearchForm = (props) => {
 
 
   const handleSubmit = e => {
+    debugger
     e.preventDefault();
     let searchUrl = `/search/${search}`;
     props.history.push(searchUrl);
 		props.handleSearch(search);
     setSearch("");
+    setUnique(uuid());
+  }
+
+  const handleAutofillSubmit = e => {
+    debugger
+    console.log(e);
+    let query = e.target.innerText;
+    e.preventDefault();
+    let searchUrl = `/search/${query}`
+    props.history.push(searchUrl);
+		props.handleSearch(query);
+    setSearch("");
+    setShowing(false);
     setUnique(uuid());
   }
 
@@ -63,7 +77,7 @@ const SearchForm = (props) => {
               console.log(description);
               description = description.join(", ")
               console.log(description);
-            return <li key={suggestion.id}>{description}</li>
+            return <li key={suggestion.id} onClick={handleAutofillSubmit}>{description}</li>
             })
             : null
           }
