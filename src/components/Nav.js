@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import Cookies from 'js-cookie';
+//Autofill
+import googleKey from '../googleKey';
+import uuid from 'react-uuid'
+import axios from 'axios';
+
+import { withRouter } from "react-router";
 
 const Nav = (props) => {
 
@@ -18,6 +24,11 @@ const Nav = (props) => {
   const[input, setInput] = useState("");
   const[showing, setShowing] = useState(false)
 
+  //AutoFill State
+  const [autofill, setArray] = useState("");
+  const [showingAuto, setShowingAuto] = useState("");
+  const [unique, setUnique] = useState(uuid());
+
   //options
   const[firstOption, setFirstOption] = useState(false);
   const[secondOption, setSecondOption] = useState(false);
@@ -26,34 +37,6 @@ const Nav = (props) => {
   const setLink = e => {
     let link = e.target.name;
     props.fetchNav(link)
-  }
-
-  const handleChange = (event) => {
-    setInput(event.target.value);
-  }
-
-  const changeLink = () => {
-    if (firstOption) {
-      setNav1(input);
-      Cookies.set('nav1', input, {expires: 30});
-      let url = abbreviate(input);
-      Cookies.set('url1', url, {expires: 30});
-      setUrl1(url);
-    }
-    if (secondOption) {
-      setNav2(input);
-      Cookies.set('nav2', input, {expires: 30});
-      let url = abbreviate(input);
-      Cookies.set('url2', url, {expires: 30});
-      setUrl2(url);
-    }
-    if (thirdOption) {
-      setNav3(input);
-      Cookies.set('nav3', input, {expires: 30});
-      let url = abbreviate(input);
-      Cookies.set('url3', url, {expires: 30});
-      setUrl3(url);
-    }
   }
 
   const abbreviate = (word) => {
@@ -100,12 +83,79 @@ const Nav = (props) => {
     }
   }
 
+  const handleChange = (event) => {
+    setInput(event.target.value);
+    axios.get(`https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${event.target.value}&key=${googleKey}&sessiontoken=${unique}`)
+      .then(response => {
+        if (response.data.predictions.length > 0) {
+          setShowingAuto(true);
+        } else {
+          setShowingAuto(false);
+        }
+        setArray(response.data.predictions);
+      })
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    changeLink();
+    if (firstOption) {
+      setNav1(input);
+      Cookies.set('nav1', input, {expires: 30});
+      let url = abbreviate(input);
+      Cookies.set('url1', url, {expires: 30});
+      setUrl1(url);
+    }
+    if (secondOption) {
+      setNav2(input);
+      Cookies.set('nav2', input, {expires: 30});
+      let url = abbreviate(input);
+      Cookies.set('url2', url, {expires: 30});
+      setUrl2(url);
+    }
+    if (thirdOption) {
+      setNav3(input);
+      Cookies.set('nav3', input, {expires: 30});
+      let url = abbreviate(input);
+      Cookies.set('url3', url, {expires: 30});
+      setUrl3(url);
+    }
+    props.fetchNav(input);
     setShowing(false);
     setInput("");
     document.getElementById("homeOption").selected = true;
+  }
+
+  const handleAutofillSubmit = e => {
+    let query = e.target.innerText;
+    e.preventDefault();
+    // let searchUrl = `/search/${query}`
+    // props.history.push(searchUrl);
+    if (firstOption) {
+      setNav1(query);
+      Cookies.set('nav1', query, {expires: 30});
+      let url = abbreviate(query);
+      Cookies.set('url1', url, {expires: 30});
+      setUrl1(url);
+    }
+    if (secondOption) {
+      setNav2(query);
+      Cookies.set('nav2', query, {expires: 30});
+      let url = abbreviate(query);
+      Cookies.set('url2', url, {expires: 30});
+      setUrl2(url);
+    }
+    if (thirdOption) {
+      setNav3(query);
+      Cookies.set('nav3', query, {expires: 30});
+      let url = abbreviate(query);
+      Cookies.set('url3', url, {expires: 30});
+      setUrl3(url);
+    }
+		props.fetchNav(query);
+    setInput("");
+    setTimeout(function(){setShowingAuto(false)}, 400);
+    setUnique(uuid());
+    document.getElementById("homeOption").selected = true
   }
 
   // Need to open an input that lets users select the location and then use the newLink function to set the Nav and the Url
@@ -133,10 +183,24 @@ const Nav = (props) => {
           ? <input id="new-link" type="text" placeholder="i.e Denver, CO" ref={textInput => textInput && textInput.focus()} className="edit-nav" value={input} onChange={handleChange}/>
           : null 
           } 
+          <ul id="autofill-changeLink" style={{display: showingAuto ? 'block' : "none"}}>
+            { showingAuto && autofill.length > 1? 
+              autofill.slice(0, 4).map(suggestion => {
+                let description = suggestion.description.split(",")
+                description.pop();
+                console.log(description);
+                description = description.join(", ")
+                console.log(description);
+              return <li key={suggestion.id} className="autofill-changeLink-li" onClick={handleAutofillSubmit}>{description}</li>
+              })
+              : null
+            }
+          </ul>
       </form>
     </div>
   </div>
   )
 }
 
-export default Nav;
+const NavWithRouter = withRouter(Nav)
+export default NavWithRouter;
