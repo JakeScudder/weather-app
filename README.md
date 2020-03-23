@@ -9,13 +9,13 @@
 </div>
 
 ### Description
-This project was built using create-react-app.  It uses Open Weather Map API to fetch weather data.  
+This project was built using create-react-app.  It is meant to be used like an App for your phone, though it works on desktop as well.  It uses Open Weather Map API to fetch weather data.  
 
 ### Technologies
 JavaScript, React, HTML, CSS, API Requests w/ Axios
 
 ### Check it out
-Will upload to github pages when properly built out
+https://jakescudder.github.io/weather-app
 
 ### How To Use
 After cloning this respository you can:
