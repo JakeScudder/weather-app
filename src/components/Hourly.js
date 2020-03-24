@@ -6,7 +6,7 @@ import {
 // import { Animated } from 'react-animated-css';
 
 
-class FiveDay extends Component {
+class Hourly extends Component {
   constructor (props) {
     super(props);
     this.state = {
@@ -49,6 +49,7 @@ class FiveDay extends Component {
 
     if (data && data.list) {
       data = this.props.data.list
+      console.log(data);
       let count = 1;
       let countTwo = 10;
       let countThree = 20;
@@ -93,4 +94,4 @@ class FiveDay extends Component {
   }
 } 
 
-export default FiveDay;
+export default Hourly;

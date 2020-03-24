@@ -124,6 +124,7 @@ class App extends Component {
     })
     axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${code}&units=imperial&APPID=${apiKey}`)
       .then(res => {
+        console.log(res);
         let conditions = res.data.weather[0].description
         this.setState({
           results: res.data,
@@ -154,8 +155,7 @@ class App extends Component {
       loading: true
     })
     axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=${code}&units=imperial&APPID=${apiKey}`)
-      .then(response => {
-        console.log(response)   
+      .then(response => { 
         this.setState({
           fiveday: response.data,
           loading: false,
