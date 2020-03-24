@@ -12,13 +12,13 @@ const Nav = (props) => {
 
   // let textInput = React.createRef();
 
-  const [nav1, setNav1] = useState(Cookies.getJSON('nav1') || "Virginia");
+  const [nav1, setNav1] = useState(Cookies.getJSON('nav1') || "Charlottesville, VA");
   const [url1, setUrl1] = useState(Cookies.getJSON('url1') || "Virginia");
 
-  const [nav2, setNav2] = useState(Cookies.getJSON('nav2') || "Maine");
+  const [nav2, setNav2] = useState(Cookies.getJSON('nav2') || "Portland, ME");
   const [url2, setUrl2] = useState(Cookies.getJSON('url2') || "Maine");
 
-  const [nav3, setNav3] = useState(Cookies.getJSON('nav3') || "Florida");
+  const [nav3, setNav3] = useState(Cookies.getJSON('nav3') || "Jacksonville, FL");
   const [url3, setUrl3] = useState(Cookies.getJSON('url3') || "Florida");
 
   const[input, setInput] = useState("");
