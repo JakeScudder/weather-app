@@ -42,6 +42,22 @@ class FiveDay extends Component {
     return temperature
   }
 
+  getDate = (count) => {
+    let day = new Date();
+    let nextDay = new Date(day)
+    nextDay.setDate(day.getDate() + count)
+    nextDay = nextDay.toDateString().replace(" 2020", "");
+    nextDay = nextDay.split(" ");
+    return `${nextDay[0]}, ${nextDay[1]} ${nextDay[2]}`;
+  }
+
+  // handleCount = (count, countTwo, countThree, countFour) => {
+  //   count += 1;
+  //   countTwo += 1;
+  //   countThree += 1;
+  //   countFour += 1;
+  // }
+
   render() {
     this.waitForIt();
     let data = this.props.data;
@@ -64,16 +80,18 @@ class FiveDay extends Component {
         weather = weather.charAt(0).toUpperCase() + weather.slice(1);
         let wind = data[i].wind.speed;
         wind = this.adjustTemp(wind);
-        let d = new Date();
-        let months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
-        let month = months[d.getMonth()];
-        let day = d.getDate();
-        day = day += count;
+
+        //Get Date
+        let finalDate = this.getDate(count)
+
+        //Handle Day count and key Ids
         count += 1;
         countTwo += 1;
         countThree += 1;
         countFour += 1;
-        days.push(<p key ={count} className="five-day-forecast"> {month} {day}: </p>)
+
+        //Push Paragraphs into array
+        days.push(<p key ={count} className="five-day-forecast"> {finalDate} </p>)
         days.push(<p key ={countTwo} className="five-day-desc">Temp: {predictedTemp}° </p>) 
         days.push(<p key ={countThree} className="five-day-desc">Conditions: {weather}</p>) 
         days.push(<p key ={countFour} className="five-day-desc">Wind: {wind}mph</p>) 
