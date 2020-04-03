@@ -11,6 +11,7 @@ const Forecast = (props) => {
   let descCapitalized;
   let currentTemp;
   let wind;
+  let gust;
   let direction;
   let feels;
   let low;
@@ -26,9 +27,13 @@ const Forecast = (props) => {
 
   const windy = () => {
     let rawWind = data.wind.speed;
+    let rawGust = data.wind.gust;
     rawWind = Math.round(rawWind);
+    rawGust = Math.round(rawGust);
+    gust = Math.trunc(rawGust)
     wind = Math.trunc(rawWind)
 
+    console.log(data.wind)
     direction = data.wind.deg;
     if (direction >= 334 || direction <= 25) {
       direction = "N";
@@ -130,14 +135,34 @@ const Forecast = (props) => {
       </div>
       <div id="forecast-div">
         <div id="forecast-flex">
-          <div>{`Currently: ${currentTemp}°`}</div>
-          <div>{`Feels Like: ${feels}°`}</div>
-          <div>{`Wind: ${direction} ${wind}mph`}</div>
-          <div>{`Low Today: ${low}°`}</div>
-          <div>{`High Today: ${high}°`}</div>
+          <div>
+            <p className="p-header">Currently: </p>
+            <p className="p-detail">{currentTemp}°</p>
+          </div>
+          <div>
+            <p className="p-header">Feels Like: </p>
+            <p className="p-detail">{feels}°</p>
+          </div>
+          <div>
+            <p className="wind-header">Wind:</p>
+            {direction ? 
+              <p className="wind-detail">{direction} {wind}mph</p>
+              : null
+            }
+            <p className="wind-header">Gust:</p>
+            <p className="wind-detail">{gust} mph</p>
+          </div>
+          <div>
+            <p className="p-header">Low Today: </p>
+            <p className="p-detail">{low}°</p>
+          </div>
+          <div>
+            <p className="p-header">High Today: </p>
+            <p className="p-detail">{high}°</p>
+          </div>
           <div className="tide">
-            <p >{`Sunrise: ${sunrise}`}</p>
-            <p>{`Sunset: ${sunset}`}</p> 
+            <p className="p-detail">Sunrise: {sunrise}</p>
+            <p className="p-detail">Sunset: {sunset}</p> 
           </div>
         </div>
       </div>

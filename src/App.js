@@ -167,13 +167,22 @@ class App extends Component {
       })
   }
 
+  refresh = () => {
+    window.location.reload();
+  } 
+
   render() {
     return (
       <HashRouter >
       <div className="App">
         <Jumbotron>
           <Container>
-            <h4 id="appTitle">BlueJay Weather</h4>
+            <div id="title-refresh-div">
+              <h4 id="appTitle">BlueJay Weather</h4>
+              <button id="refresh" onClick={this.refresh}> 
+              <i className="material-icons refresh-icon">autorenew</i>
+              </button>
+            </div>
             <SearchForm 
               handleSearch={this.handleSearch}
             />
