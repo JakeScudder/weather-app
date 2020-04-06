@@ -18,6 +18,7 @@ const Forecast = (props) => {
   let high;
   let sunrise;
   let sunset;
+  let mph = "mph"
   
   const roundTemp = () => {
     let rawTemp = data.main.temp;
@@ -32,6 +33,11 @@ const Forecast = (props) => {
     rawGust = Math.round(rawGust);
     gust = Math.trunc(rawGust)
     wind = Math.trunc(rawWind)
+
+    if (!gust) {
+      gust = "N/A";
+      mph = "";
+    }
 
     console.log(data.wind)
     direction = data.wind.deg;
@@ -150,7 +156,7 @@ const Forecast = (props) => {
               : null
             }
             <p className="wind-header">Gust:</p>
-            <p className="wind-detail">{gust} mph</p>
+            <p className="wind-detail">{gust} {mph}</p>
           </div>
           <div>
             <p className="p-header">Low Today: </p>
