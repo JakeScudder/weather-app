@@ -149,7 +149,7 @@ const Forecast = (props) => {
             <p className="p-header">Feels Like: </p>
             <p className="p-detail">{feels}°</p>
           </div>
-          <div>
+          <div id="wind-div">
             <p className="wind-header">Wind:</p>
             {direction ? 
               <p className="wind-detail">{direction} {wind}mph</p>
