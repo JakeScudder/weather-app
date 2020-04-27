@@ -31,7 +31,6 @@ const SearchForm = (props) => {
   }
 
   const handleAutofillSubmit = e => {
-    debugger
     let query = e.target.innerText;
     e.preventDefault();
     let searchUrl = `/search/${query}`

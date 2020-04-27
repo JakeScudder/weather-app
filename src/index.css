@@ -102,6 +102,7 @@ div.container {
   height: 30px;
   width: 50%;
   margin-top: -11px;
+  margin-bottom: -10px;
   padding: 0px;
   background-color: #378dea;
   border-color: #378dea;
@@ -530,8 +531,25 @@ div#five-day-conditions {
   #appTitle {
     margin-bottom: 20px;
   }
+
+  #searchBar {
+    width: 70%;
+    margin: auto;
+  }
   #searchButton {
     margin-top: 10px;
+    margin-bottom: -20px;
+    width: 30%;
+  }
+
+  #favorite-options {
+    width: 40%;
+    margin-left: 90px;
+  }
+
+  input#new-link {
+    width: 40%;
+    margin-left:600px;
   }
 
   #nav-container {
@@ -566,10 +584,38 @@ div#five-day-conditions {
 
 @media screen and (min-width: 982px) {
   #forecast-flex {
-    width: 35%;
+    width: 45%;
     margin-left: auto;
     margin-right: auto;
   }
+
+  #forecast-flex div {
+    width: 125px;
+    height: 125px;
+    font-size: 20px;
+  }
+
+  p.five-day-forecast {
+    width: 18%;
+
+  }
+
+  p.five-day-desc {
+    width: 25%;
+  }
+  
+
+  ul#autofill {
+    margin-top: 90px;
+    margin-left: 129px;
+    width: 52.5%
+  }
+
+  ul#autofill-changeLink {
+    margin-left: 600px;
+    width: 40%;
+  }
+
 }
 
 @media screen and (min-height: 721px) and (min-width: 900px) {

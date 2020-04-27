@@ -156,6 +156,7 @@ const Nav = (props) => {
     setTimeout(function(){setShowingAuto(false)}, 400);
     setUnique(uuid());
     document.getElementById("homeOption").selected = true
+    showHideInput();
   }
 
   // Need to open an input that lets users select the location and then use the newLink function to set the Nav and the Url
