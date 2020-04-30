@@ -403,7 +403,6 @@ div#five-day-conditions {
 #footer {
   background-color: grey;
   height: 10%;
-  min-height: 10%;
   position: relative;
   bottom: 0;
   width: 100%;
@@ -527,7 +526,7 @@ div#five-day-conditions {
 
 /* Media Query for Desktop*/
 
-@media screen and (min-width: 555px) {
+@media screen and (min-width: 555px) and (max-width: 1200px) {
   #appTitle {
     margin-bottom: 20px;
   }
@@ -626,5 +625,16 @@ div#five-day-conditions {
   }
   #searchButton {
     margin-bottom: -40px;
+  }
+
+  #searchBar {
+    margin-top: -60px;
+  }
+
+  div.jumbotron {
+    height: 42%;
+  }
+  #footer {
+    height: 8%;
   }
 }
