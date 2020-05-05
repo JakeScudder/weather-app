@@ -53,9 +53,8 @@ div.jumbotron {
   margin: auto;
   position: relative;
   padding: 0px;
-  /* background-image: url(./images/Humpback.jpg); */
   height: 40%;
-  min-height: 220px;
+  min-height: 235px;
   background-color: white;
   border: 7px solid grey;
   border-radius: 0px;
@@ -202,7 +201,7 @@ div#forecast {
   text-align-last: center;
   font-size: 16px;
   height: 35px;
-  width: 50%;
+  width: 45%;
   float: left;
   background-color: #378dea;
   border-color: #378dea;
@@ -496,7 +495,7 @@ div#five-day-conditions {
   list-style: none;
   width: 45%;
   padding-inline-start: 0;
-  margin-left: 162px;
+  margin-left: 51%;
 }
 
 #autofill-changeLink ul {
