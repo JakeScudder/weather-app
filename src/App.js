@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import postscribe from 'postscribe';
-import { HashRouter, Route, Switch } from 'react-router-dom';
-//Bootstraps
-import { Container, Jumbotron } from 'react-bootstrap';
+import React, { Component } from "react";
+import postscribe from "postscribe";
+import { HashRouter, Route, Switch } from "react-router-dom";
+// Bootstraps
+import { Container, Jumbotron } from "react-bootstrap";
 
-//Components
-import SearchForm from './components/SearchForm';
-import Results from './components/Results';
-import Nav from './components/Nav';
-import Footer from './components/Footer';
-import FiveDay from './components/FiveDay';
+// Components
+import SearchForm from "./components/SearchForm";
+import Results from "./components/Results";
+import Nav from "./components/Nav";
+import Footer from "./components/Footer";
+import FiveDay from "./components/FiveDay";
 
-//Fetch
-import axios from 'axios';
-import apiKey from './config';
-import googleKey from './googleKey';
-const cityData = require('./city.list.json');
-
+// Fetch
+import axios from "axios";
+import apiKey from "./config";
+import googleKey from "./googleKey";
+// List of all cities with specific codes
+const cityData = require("./city.list.json");
 
 class App extends Component {
   constructor() {
@@ -30,203 +30,266 @@ class App extends Component {
       conditions: "",
       background: "",
       jumboSmall: true,
-      loading: true
-    }
+      loading: true,
+    };
     this.jumbo = React.createRef();
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.handleWeatherFetch();
-    postscribe('#root', `<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=${googleKey}&libraries=places"></script>`);
+    postscribe(
+      "#root",
+      `<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=${googleKey}&libraries=places"></script>`
+    );
   }
 
-  
- setBackground = (conditions = "clear sky") => {
+  setBackground = (conditions = "clear sky") => {
     const imageObject = {
-      clearSky: "url(https://live.staticflickr.com/4671/40268815811_1244a6b370_z.jpg)",
-      lightRain: "url(https://live.staticflickr.com/3906/14674848444_e04aeab462.jpg)",
-      moderateRain: "url(https://live.staticflickr.com/4576/24410968298_7e29e77769.jpg)",
-      heavyRain: "url(https://live.staticflickr.com/4017/4394669806_ab806947fb_z.jpg)",
-      lightSnow:"url(https://live.staticflickr.com/4746/25604711047_5f06f28d8b.jpg)" ,
-      moderateSnow: "url(https://live.staticflickr.com/4746/25604711047_5f06f28d8b.jpg)",
-      heavySnow: "url(https://live.staticflickr.com/4746/25604711047_5f06f28d8b.jpg)",
-      scatteredCloud:"url(https://live.staticflickr.com/3229/2887338950_0a190905a1.jpg)" ,
-      overcastCloud: "url(https://live.staticflickr.com/3229/2887338950_0a190905a1.jpg)",
-    }
+      clearSky:
+        "url(https://live.staticflickr.com/4671/40268815811_1244a6b370_z.jpg)",
+      lightRain:
+        "url(https://live.staticflickr.com/3906/14674848444_e04aeab462.jpg)",
+      moderateRain:
+        "url(https://live.staticflickr.com/4576/24410968298_7e29e77769.jpg)",
+      heavyRain:
+        "url(https://live.staticflickr.com/4017/4394669806_ab806947fb_z.jpg)",
+      lightSnow:
+        "url(https://live.staticflickr.com/4746/25604711047_5f06f28d8b.jpg)",
+      moderateSnow:
+        "url(https://live.staticflickr.com/4746/25604711047_5f06f28d8b.jpg)",
+      heavySnow:
+        "url(https://live.staticflickr.com/4746/25604711047_5f06f28d8b.jpg)",
+      scatteredCloud:
+        "url(https://live.staticflickr.com/3229/2887338950_0a190905a1.jpg)",
+      overcastCloud:
+        "url(https://live.staticflickr.com/3229/2887338950_0a190905a1.jpg)",
+    };
     this.setState({
-      background: imageObject.clearSky
-    })
+      background: imageObject.clearSky,
+    });
     if (conditions.includes("clear")) {
       this.setState({
-        background: imageObject.clearSky
-      })
+        background: imageObject.clearSky,
+      });
       return;
     }
     if (conditions.includes("rain")) {
       this.setState({
-        background: imageObject.lightRain
-      })
+        background: imageObject.lightRain,
+      });
       return;
     }
     if (conditions.includes("light rain")) {
       this.setState({
-        background: imageObject.lightRain
-      })
+        background: imageObject.lightRain,
+      });
       return;
     }
     if (conditions.includes("moderate rain")) {
       this.setState({
-        background: imageObject.moderateRain
-      })
+        background: imageObject.moderateRain,
+      });
       return;
     }
     if (conditions.includes("heavy rain")) {
       this.setState({
-        background: imageObject.HeavyRain
-      })
+        background: imageObject.HeavyRain,
+      });
       return;
     }
     if (conditions.includes("snow")) {
       this.setState({
-        background: imageObject.lightSnow
-      })
+        background: imageObject.lightSnow,
+      });
       return;
     }
     if (conditions.includes("clouds")) {
       this.setState({
-        background: imageObject.scatteredCloud
-      })
+        background: imageObject.scatteredCloud,
+      });
       return;
-    } 
-  }
+    }
+  };
 
   //Runs fetch api with the city code to get precise weather
-  findCityCode = (city = 'Charlottesville', state = "VA") => {
+  findCityCode = (city = "Charlottesville", state = "VA") => {
     console.log(city, state);
     this.setState({
       city: city,
       state: state,
-    })
+    });
     for (let i = 0; i < cityData.length; i++) {
       if (city === cityData[i].name && state === cityData[i].state) {
-        let code = cityData[i].id
+        let code = cityData[i].id;
         console.log(cityData[i].id);
-        this.handleWeatherFetch(code)
+        this.handleWeatherFetch(code);
       }
     }
-  }
+  };
 
   // Weather API call
   handleWeatherFetch = (code = 4752031) => {
     this.setState({
       loading: true,
       locationCode: code,
-    })
-    axios.get(`https://api.openweathermap.org/data/2.5/weather?id=${code}&units=imperial&APPID=${apiKey}`)
-      .then(res => {
+    });
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/weather?id=${code}&units=imperial&APPID=${apiKey}`
+      )
+      .then((res) => {
         console.log(res);
-        let conditions = res.data.weather[0].description
+        let conditions = res.data.weather[0].description;
         this.setState({
           results: res.data,
           conditions: conditions,
-          loading: false
-        })
-        this.setBackground(this.state.conditions);     
+          loading: false,
+        });
+        this.setBackground(this.state.conditions);
       })
-      .catch(error => {
-        console.log('Error fetching the weather data:', error)
-      })
-  }
+      .catch((error) => {
+        console.log("Error fetching the weather data:", error);
+      });
+  };
 
   //Taking the search parameters, separating them into City and State in order to then find the city code
   handleSearch = (query) => {
-    let array = query.split(',');
+    let array = query.split(",");
     let city = array[0];
     let state = array[1];
-    state = state.replace(/\s+/g, '');
+    state = state.replace(/\s+/g, "");
     let cityCapitalized = city.charAt(0).toUpperCase() + city.slice(1);
     state = state.toUpperCase();
     this.findCityCode(cityCapitalized, state);
-  }
+  };
 
   fetchFiveDay = () => {
     let code = this.state.locationCode;
     this.setState({
-      loading: true
-    })
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?id=${code}&units=imperial&APPID=${apiKey}`)
-      .then(response => { 
+      loading: true,
+    });
+    axios
+      .get(
+        `https://api.openweathermap.org/data/2.5/forecast?id=${code}&units=imperial&APPID=${apiKey}`
+      )
+      .then((response) => {
         this.setState({
           fiveday: response.data,
           loading: false,
-        }) 
-        this.setBackground(this.state.conditions);  
+        });
+        this.setBackground(this.state.conditions);
       })
-      .catch(error => {
-        console.log('Error fetching the weather data:', error)
-      })
-  }
+      .catch((error) => {
+        console.log("Error fetching the weather data:", error);
+      });
+  };
 
   refresh = () => {
     window.location.reload();
-  } 
+  };
 
   render() {
     return (
-      <HashRouter >
-      <div className="App">
-        <Jumbotron>
-          <Container>
-            <div id="title-refresh-div">
-              <h4 id="appTitle">BlueJay Weather</h4>
-              <button id="refresh" onClick={this.refresh}> 
-              <i className="material-icons refresh-icon">autorenew</i>
-              </button>
-            </div>
-            <SearchForm 
-              handleSearch={this.handleSearch}
+      <HashRouter>
+        <div className="App">
+          <Jumbotron>
+            <Container>
+              <div id="title-refresh-div">
+                <h4 id="appTitle">BlueJay Weather</h4>
+                <button id="refresh" onClick={this.refresh}>
+                  <i className="material-icons refresh-icon">autorenew</i>
+                </button>
+              </div>
+              <SearchForm handleSearch={this.handleSearch} />
+              <Nav fetchNav={this.handleSearch} />
+            </Container>
+          </Jumbotron>
+          <Switch>
+            <Route
+              exact
+              path="/"
+              render={(props) => (
+                <Results
+                  {...props}
+                  city={this.state.city}
+                  state={this.state.state}
+                  data={this.state.results}
+                  background={this.state.background}
+                />
+              )}
             />
-            <Nav fetchNav={this.handleSearch}/>
-          </Container>
-        </Jumbotron>
-        <Switch>
-          <Route exact path ="/"
-          render={(props) => <Results {...props} city={this.state.city} state={this.state.state} data={this.state.results} background={this.state.background} /> }
-          />
-          <Route exact path ="/link1"
-          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-          />
+            <Route
+              exact
+              path="/link1"
+              render={(props) => (
+                <Results
+                  {...props}
+                  data={this.state.results}
+                  background={this.state.background}
+                />
+              )}
+            />
 
-          <Route exact path ="/link2"
-          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-          />
-          <Route exact path ="/link3"
-          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-          />
-          <Route exact path ="/search/:query"
-          render={(props) => <Results {...props} data={this.state.results} background={this.state.background} /> }
-          />
-          <Route exact path ="/five-day"
-          render={(props) => <FiveDay fetch5Day={this.fetchFiveDay} city={this.state.city} conditions={this.state.conditions} {...props} data={this.state.fiveday} background={this.state.background} /> }
-          />
-        </Switch>
-        <Footer fetch5Day={this.fetchFiveDay} />
-      </div>
+            <Route
+              exact
+              path="/link2"
+              render={(props) => (
+                <Results
+                  {...props}
+                  data={this.state.results}
+                  background={this.state.background}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/link3"
+              render={(props) => (
+                <Results
+                  {...props}
+                  data={this.state.results}
+                  background={this.state.background}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/search/:query"
+              render={(props) => (
+                <Results
+                  {...props}
+                  data={this.state.results}
+                  background={this.state.background}
+                />
+              )}
+            />
+            <Route
+              exact
+              path="/five-day"
+              render={(props) => (
+                <FiveDay
+                  fetch5Day={this.fetchFiveDay}
+                  city={this.state.city}
+                  conditions={this.state.conditions}
+                  {...props}
+                  data={this.state.fiveday}
+                  background={this.state.background}
+                />
+              )}
+            />
+          </Switch>
+          <Footer fetch5Day={this.fetchFiveDay} />
+        </div>
       </HashRouter>
-      
     );
   }
 }
 
 export default App;
 
-
- 
-
-//***** Working Flickr Fetch: 
+//***** Working Flickr Fetch:
 
 /* Does not retrieve optimal images based on weather description. Increases Load times.  May use later for something. Checks for image, reduces image size link; */
-
 
 // reFormat = (format) => {
 //   let editFormat = format.substring(0, format.lastIndexOf("_"));
@@ -235,7 +298,7 @@ export default App;
 //   this.setState({
 //     background: format,
 //     loading: false
-//   }) 
+//   })
 // }
 // //Fetch background Image
 // handleFlickr = (query) => {
@@ -247,7 +310,7 @@ export default App;
 //   axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKeyFlickr}&tags=${query}&per_page=24&extras=url_o&format=json&nojsoncallback=1`)
 //   .then(res => {
 //     console.log(res.data.photos)
-//     let format = `url(${res.data.photos.photo[num].url_o})`;  
+//     let format = `url(${res.data.photos.photo[num].url_o})`;
 //     for(let i = 0; i < 20; i++) {
 //       if (format === "url(undefined)") {
 //         console.log("+1");
@@ -255,7 +318,7 @@ export default App;
 //         i++
 //       } else {
 //         this.reFormat(format);
-//       } 
+//       }
 //     }
 //   })
 //   .catch(error => {
